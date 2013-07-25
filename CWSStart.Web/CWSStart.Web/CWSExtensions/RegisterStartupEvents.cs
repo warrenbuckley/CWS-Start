@@ -26,6 +26,17 @@ namespace CWSStart.Web.CWSExtensions
 
             //Ensure our custom member type & it's properties are setup in Umbraco
             //If not let's create it
+            MemberGroup checkMemberGroup = MemberGroup.GetByName("CWS-Members");
+
+            //Doesn't exist
+            if (checkMemberGroup == null)
+            {
+                //Add custom member group to Umbraco install
+                AddCustomMemberGroup();
+            }
+
+            //Ensure our custom member type & it's properties are setup in Umbraco
+            //If not let's create it
             MemberType checkMemberType = MemberType.GetByAlias("CWS-Member");
 
             //Doesn't exist
@@ -46,6 +57,17 @@ namespace CWSStart.Web.CWSExtensions
             }
         }
 
+        protected void AddCustomMemberGroup()
+        {
+            //Admin user
+            var adminUser = new User("admin");
+
+            //Let's add our Member Group
+            var customMemberGroup = MemberGroup.MakeNew("CWS-Members", adminUser);
+            
+            //Save it
+            customMemberGroup.Save();
+        }
 
 
         protected void AddCustomMemberType()
