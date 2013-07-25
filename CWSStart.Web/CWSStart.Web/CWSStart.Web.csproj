@@ -232,11 +232,36 @@
     <Content Include="masterpages\dummy.txt" />
     <Content Include="media\dummy.txt" />
     <Content Include="scripts\dummy.txt" />
+    <Content Include="umbraco\Images\Umbraco\CWS-blue-document-text-image.png" />
+    <Content Include="umbraco\Images\Umbraco\CWS-blue-document-text.png" />
+    <Content Include="umbraco\Images\Umbraco\CWS-home.png" />
+    <Content Include="umbraco\Images\Umbraco\CWS-mail--exclamation.png" />
+    <Content Include="umbraco\Images\Umbraco\CWS-door-open-in.png" />
+    <Content Include="umbraco\Images\Umbraco\CWS-newspaper.png" />
+    <Content Include="umbraco\Images\Umbraco\CWS-newspapers.png" />
+    <Content Include="umbraco\Images\Umbraco\CWS-lock-warning.png" />
+    <Content Include="umbraco\Images\Umbraco\CWS-image-sunset.png" />
+    <Content Include="umbraco\Images\Umbraco\CWS-images-stack.png" />
+    <Content Include="umbraco\Images\Umbraco\CWS-folder-open-image.png" />
+    <Content Include="umbraco\Images\Umbraco\CWS-mail-air.png" />
+    <Content Include="umbraco\Images\Umbraco\CWS-key.png" />
+    <Content Include="umbraco\Images\Umbraco\CWS-user--pencil.png" />
+    <Content Include="umbraco\Images\Umbraco\CWS-user-silhouette-question.png" />
+    <Content Include="umbraco\Images\Umbraco\CWS-user.png" />
+    <Content Include="umbraco\Images\Umbraco\CWS-users.png" />
+    <Content Include="umbraco\Images\Umbraco\CWS-user--plus.png" />
     <Content Include="usercontrols\dummy.txt" />
     <Content Include="Web.config" />
     <Content Include="xslt\dummy.txt" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\AuthSurfaceController.cs" />
+    <Compile Include="Controllers\ContactFormSurfaceController.cs" />
+    <Compile Include="CWSExtensions\ExtensionMethods.cs" />
+    <Compile Include="CWSExtensions\RegisterStartupEvents.cs" />
+    <Compile Include="Models\ContactFormViewModel.cs" />
+    <Compile Include="Models\AuthViewModels.cs" />
+    <Compile Include="Pocos\ContactForm.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -264,6 +289,16 @@
     <Content Include="config\404handlers.config" />
     <Content Include="bin\x86\Microsoft.VC90.CRT\Microsoft.VC90.CRT.manifest" />
     <Content Include="bin\amd64\Microsoft.VC90.CRT\Microsoft.VC90.CRT.manifest" />
+    <Content Include="Views\CWS-ContactForm.cshtml" />
+    <Content Include="Views\CWS-Galleries.cshtml" />
+    <Content Include="Views\CWS-Gallery.cshtml" />
+    <Content Include="Views\CWS-Home.cshtml" />
+    <Content Include="Views\CWS-Master.cshtml" />
+    <Content Include="Views\CWS-Textpage.cshtml" />
+    <Content Include="Views\ContactFormSurface\ContactForm.cshtml" />
+    <Content Include="Views\CWS-News-Item.cshtml" />
+    <Content Include="Views\CWS-News.cshtml" />
+    <Content Include="Views\CWS-Contact-Form.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -271,6 +306,11 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
     <Content Include="xslt\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\AuthSurface\" />
+    <Folder Include="Views\MacroPartials\" />
+    <Folder Include="Views\Partials\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
