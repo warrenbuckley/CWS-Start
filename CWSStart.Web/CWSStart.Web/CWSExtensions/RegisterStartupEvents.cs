@@ -16,24 +16,13 @@ namespace CWSStart.Web.CWSExtensions
 
     public class RegisterStartupEvents : ApplicationEventHandler
     {
-        private const int LabelDataTypeID = -92;
-        private const int TextStringDataTypeID = -88;
-        private const int BooleanDataTypeID = -49;
+        private const int LabelDataTypeID       = -92;
+        private const int TextStringDataTypeID  = -88;
+        private const int BooleanDataTypeID     = -49;
 
         protected override void ApplicationStarted(UmbracoApplicationBase umbracoApplication, ApplicationContext applicationContext)
         {
             //Umbraco App has started
-
-            //Ensure our custom member group is setup in Umbraco
-            //If not let's create it
-            MemberGroup checkMemberGroup = MemberGroup.GetByName("CWS-Members");
-
-            //Doesn't exist
-            if (checkMemberGroup == null)
-            {
-                //Add custom member group
-                AddCustomMemberGroup();
-            }
 
             //Ensure our custom member type & it's properties are setup in Umbraco
             //If not let's create it
@@ -57,32 +46,18 @@ namespace CWSStart.Web.CWSExtensions
             }
         }
 
-        protected void AddCustomMemberGroup()
-        {
-            //Admin user
-            var adminUser = new User("admin");
 
-            //Create the Member Group for these members
-            var customMemberGroup = MemberGroup.MakeNew("CWS-Members", adminUser);
-
-            //Save it
-            customMemberGroup.Save();
-        }
 
         protected void AddCustomMemberType()
         {
             //Admin user
             var adminUser = new User("admin");
 
+            //So let's add it...
+            var customMemberType    = MemberType.MakeNew(adminUser, "CWS-Member");
+            customMemberType.Text   = "[CWS] Member";
+            customMemberType.Alias  = "CWS-Member";
 
-
-            //Create the Member Group for these members
-            var customMemberGroup = MemberGroup.MakeNew("CWS-Members", adminUser);
-
-            //Create the Custom Member Type which has our custom properties on it
-            var customMemberType = MemberType.MakeNew(adminUser, "CWS-Member");
-
-            /*
             //Our DataType's (Have to be verbose with namespace, due to conflict with Umbraco.Core.Models)
             var labelDataType       = new umbraco.cms.businesslogic.datatype.DataTypeDefinition(LabelDataTypeID);
             var textstringDataType  = new umbraco.cms.businesslogic.datatype.DataTypeDefinition(TextStringDataTypeID);
@@ -108,11 +83,10 @@ namespace CWSStart.Web.CWSExtensions
             customMemberType.AddPropertyType(textstringDataType, "twitter", "Twitter");
             customMemberType.AddPropertyType(textstringDataType, "linkedIn", "LinkedIn");
             customMemberType.AddPropertyType(textstringDataType, "skype", "Skype");
-            */
-
+            
             //Save the changes
             customMemberType.Save();
         }
-
+        
     }
 }
