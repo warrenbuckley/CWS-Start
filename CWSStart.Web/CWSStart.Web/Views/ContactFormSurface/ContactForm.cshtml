@@ -1,0 +1,42 @@
+﻿@using CWSStart.Web.Controllers
+@using CWSStart.Web.Models
+@model ContactFormViewModel
+ 
+@{
+    Html.EnableClientValidation(true);
+    Html.EnableUnobtrusiveJavaScript(true);
+}
+ 
+@if (Convert.ToBoolean(TempData["IsSuccessful"]))
+{
+    <h1>YAY!</h1>
+    <p>Thanks for sending your message, we will get back to you shortly.</p>
+}
+else
+{
+    using (Html.BeginUmbracoForm<ContactFormSurfaceController>("HandleContactForm"))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+ 
+        <div>
+            @Html.LabelFor(model => model.Name)
+            @Html.TextBoxFor(model => model.Name, new { placeholder = "Your Name" })
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+    
+        <div>
+            @Html.LabelFor(model => model.Email)
+            @Html.TextBoxFor(model => model.Email, new { placeholder = "Email Address" })
+            @Html.ValidationMessageFor(model => model.Email)
+        </div>
+    
+        <div>
+            @Html.LabelFor(model => model.Message)
+            @Html.TextAreaFor(model => model.Message, new { placeholder = "Your Message" })
+            @Html.ValidationMessageFor(model => model.Message)
+        </div>
+ 
+        <input type="submit" value="Send" />
+    }
+}
