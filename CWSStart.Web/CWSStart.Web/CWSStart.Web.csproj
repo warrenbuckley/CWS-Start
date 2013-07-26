@@ -299,6 +299,7 @@
     <Content Include="Views\CWS-News-Item.cshtml" />
     <Content Include="Views\CWS-News.cshtml" />
     <Content Include="Views\CWS-Contact-Form.cshtml" />
+    <Content Include="Views\AuthSurface\Login.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -308,7 +309,6 @@
     <Content Include="xslt\Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Views\AuthSurface\" />
     <Folder Include="Views\MacroPartials\" />
     <Folder Include="Views\Partials\" />
   </ItemGroup>
