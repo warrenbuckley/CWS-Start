@@ -126,6 +126,28 @@ namespace CWSStart.Web.Controllers
             return RedirectToCurrentUmbracoPage();
         }
 
+        //Logout
+        //Used with an ActionLink
+        //@Html.ActionLink("Logout", "Logout", "AuthSurface")
+        public ActionResult Logout()
+        {
+            //Member already logged in, lets log them out and redirect them home
+            if (Member.IsLoggedOn())
+            {
+                //Log member out
+                FormsAuthentication.SignOut();
+
+                //Redirect home
+                return Redirect("/");
+            }
+            else
+            {
+                //Redirect home
+                return Redirect("/");
+            }
+        }
+
+
 
         //Register
 
