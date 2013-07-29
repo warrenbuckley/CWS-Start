@@ -226,11 +226,17 @@
     <Content Include="bin\x86\sqlceme40.dll" />
     <Content Include="bin\x86\sqlceqp40.dll" />
     <Content Include="bin\x86\sqlcese40.dll" />
+    <Content Include="css\bootstrap.css" />
+    <Content Include="css\bootstrap.min.css" />
+    <Content Include="css\CWS-start.css" />
+    <Content Include="css\sticky-footer.css" />
     <Content Include="css\dummy.txt" />
     <Content Include="default.aspx" />
     <Content Include="macroScripts\dummy.txt" />
     <Content Include="masterpages\dummy.txt" />
     <Content Include="media\dummy.txt" />
+    <Content Include="scripts\bootstrap.js" />
+    <Content Include="scripts\bootstrap.min.js" />
     <Content Include="scripts\dummy.txt" />
     <Content Include="umbraco\Images\Umbraco\CWS-blue-document-text-image.png" />
     <Content Include="umbraco\Images\Umbraco\CWS-blue-document-text.png" />
@@ -310,6 +316,9 @@
     <Content Include="Views\CWS-Login.cshtml" />
     <Content Include="Views\ProfileSurface\ViewProfile.cshtml" />
     <Content Include="Views\CWS-Register.cshtml" />
+    <Content Include="Views\CWS-Forgotten-Password.cshtml" />
+    <Content Include="Views\CWS-Reset-Password.cshtml" />
+    <Content Include="Views\CWS-Verify-Email.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
