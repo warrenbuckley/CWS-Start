@@ -12,28 +12,27 @@
 
 @if (!ViewData.ModelState.IsValid)
 {
-    <h3>Forgotten your password?</h3>
-    <p>
-        Don't worry we all forget our passwords from time to time
-    </p>
+    <div class="alert alert-danger">
+        <h4>Forgotten your password?</h4>
+        <p>
+            Don't worry we all forget our passwords from time to time and <a href="/forgotten-password">may need a reminder</a>.
+        </p>
     
-    foreach (ModelState modelState in ViewData.ModelState.Values)
-    {
-        var errors = modelState.Errors;
+        @foreach (ModelState modelState in ViewData.ModelState.Values)
+        {
+            var errors = modelState.Errors;
 
-        if (errors.Any())
-        { 
-            <ul>
-                @foreach(ModelError error in errors)
-                {
-                    <li><em>@error.ErrorMessage</em></li>
-                }
-            </ul>
+            if (errors.Any())
+            { 
+                <ul>
+                    @foreach(ModelError error in errors)
+                    {
+                        <li>@error.ErrorMessage</li>
+                    }
+                </ul>
+            }
         }
-    }
-    <p>
-        <a href="/forgotten-password">Remind me</a>
-    </p>
+    </div>
 }
 
 
@@ -43,30 +42,21 @@
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>Login</legend>
-        
-		<div class="editor-label">
+        <div class="form-group">
             @Html.LabelFor(model => model.EmailAddress)
-        </div>
-
-        <div class="editor-field">
-            @Html.EditorFor(model => model.EmailAddress)
+            @Html.TextBoxFor(model => model.EmailAddress, new{ @class = "form-control", placeholder = "Email Address" })
             @Html.ValidationMessageFor(model => model.EmailAddress)
         </div>
-        
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Password)
-        </div>
 
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Password)
+        <div class="form-group">
+            @Html.LabelFor(model => model.Password)
+            @Html.PasswordFor(model => model.Password, new{ @class = "form-control", placeholder = "Password" })
             @Html.ValidationMessageFor(model => model.Password)
         </div>
         
         @Html.HiddenFor(Model => Model.ReturnUrl)
+        
+        <button type="submit" class="btn btn-default">Login</button>
 
-        <p>
-            <input type="submit" value="Login" />
-        </p>
     </fieldset>
 }

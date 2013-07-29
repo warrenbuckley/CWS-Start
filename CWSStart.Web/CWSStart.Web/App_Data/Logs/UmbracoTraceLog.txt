@@ -423,3 +423,9 @@ System.Exception: Duplicate Email! A member with the e-mail warren@creativewebsp
 2013-07-29 16:55:40,038 [121] INFO  umbraco.content - [Thread 119] Loading content from disk cache...
 2013-07-29 16:56:35,617 [121] INFO  Umbraco.Core.PluginManager - [Thread 115] Starting resolution types of Umbraco.Core.Persistence.Mappers.BaseMapper
 2013-07-29 16:56:35,630 [121] INFO  Umbraco.Core.PluginManager - [Thread 115] Completed resolution of types of Umbraco.Core.Persistence.Mappers.BaseMapper, found 17 (took 13ms)
+2013-07-29 17:18:16,288 [121] INFO  Umbraco.Web.Mvc.UmbracoPageResult - [Thread 96] Executing Umbraco RouteDefinition controller
+2013-07-29 17:18:16,293 [121] INFO  Umbraco.Web.Mvc.UmbracoPageResult - [Thread 96] Finished (took 4ms)
+2013-07-29 17:20:39,536 [121] INFO  Umbraco.Web.Mvc.UmbracoPageResult - [Thread 82] Executing Umbraco RouteDefinition controller
+2013-07-29 17:20:39,544 [121] INFO  Umbraco.Web.Mvc.UmbracoPageResult - [Thread 82] Finished (took 8ms)
+2013-07-29 17:20:56,778 [121] INFO  Umbraco.Web.Mvc.UmbracoPageResult - [Thread 82] Executing Umbraco RouteDefinition controller
+2013-07-29 17:20:59,504 [121] INFO  Umbraco.Web.Mvc.UmbracoPageResult - [Thread 82] Finished (took 2725ms)
