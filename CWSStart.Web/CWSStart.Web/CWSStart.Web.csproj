@@ -238,6 +238,7 @@
     <Content Include="scripts\bootstrap.js" />
     <Content Include="scripts\bootstrap.min.js" />
     <Content Include="scripts\dummy.txt" />
+    <Content Include="scripts\jquery-1.10.2.min.js" />
     <Content Include="umbraco\Images\Umbraco\CWS-blue-document-text-image.png" />
     <Content Include="umbraco\Images\Umbraco\CWS-blue-document-text.png" />
     <Content Include="umbraco\Images\Umbraco\CWS-home.png" />

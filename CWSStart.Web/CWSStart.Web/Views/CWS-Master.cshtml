@@ -6,11 +6,11 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
+        
+        <title>CWS Start - The Umbraco MVC Starter Website</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
-        <meta name="author" content="">
-
-        <title>CWS Start - The Umbraco MVC Starter Website</title>
+        <meta name="author" content="Warren Buckley - A Creative Web Specialist in Umbraco">
         
         <!-- Bootstrap core CSS -->
         <link href="/css/bootstrap.min.css" rel="stylesheet">
@@ -18,10 +18,19 @@
 
         <!-- Custom CWS Start Styles -->
         <link href="/css/cws-start.css" rel="stylesheet">
+        
+        <!-- Favicons -->
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
+        <link rel="shortcut icon" href="../assets/ico/favicon.png">
+
     </head>
     <body>
         <!-- Wrap all page content here -->
         <div id="wrap">
+            
             <!-- Fixed navbar -->
             <div class="navbar navbar-fixed-top">
                 <div class="container">
@@ -56,25 +65,24 @@
             <!-- Begin page content -->
             <div class="container">
                 @RenderBody()
-                
-
-                <div class="page-header">
-                    <h1>Sticky footer with fixed navbar</h1>
-                </div>
-                <p class="lead">Pin a fixed-height footer to the bottom of the viewport in desktop browsers with this custom HTML and CSS. A fixed navbar has been added within <code>#wrap</code> with <code>padding-top: 60px;</code> on the <code>.container</code>.</p>
-                <p>Back to <a href="../sticky-footer">the default sticky footer</a> minus the navbar.</p>
             </div>
         </div>
-
+        
+        <!-- Footer -->
         <div id="footer">
-          <div class="container">
-              <p class="text-muted credit">
-                  CWS Start is an example website starter kit for <a href="http://umbraco.com" target="_blank">the Open Source ASP.NET CMS platform Umbraco</a>. <br/>
-                  Built by <a href="http://creativewebspecialist.co.uk" target="_blank">Warren Buckley</a> and 
-                  powered by <a href="http://getbootstrap.com" target="_blank">Bootstrap 3RC1 Framework</a>.
-              </p>
-          </div>
+            <div class="container">
+                <p class="text-muted">
+                    CWS Start is an example website starter kit for <a href="http://umbraco.com" target="_blank">the Open Source ASP.NET CMS platform Umbraco</a>. <br/>
+                    Built by <a href="http://creativewebspecialist.co.uk" target="_blank">Warren Buckley</a> and 
+                    powered by <a href="http://getbootstrap.com" target="_blank">Bootstrap 3RC1 Framework</a>.
+                </p>
+            </div>
         </div>
         
+        <!-- JS Files -->
+        <script src="/scripts/jquery-1.10.2.min.js"></script>
+        <script src="/scripts/bootstrap.min.js"></script>
+        
+        @RenderSection("Scripts", false)
     </body>
 </html>
