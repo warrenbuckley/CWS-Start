@@ -227,7 +227,7 @@ namespace CWSStart.Web.Controllers
             }
 
             //Send out verification email, with GUID in it
-            EmailHelper.SendVerifyEmail(model.EmailAddress, tempGUID.ToString());
+            EmailHelper.SendVerifyEmail(model.EmailAddress, "robot@your-site.co.uk", "CWS - Verify Email", tempGUID.ToString());
 
             //Update success flag (in a TempData key)
             TempData["IsSuccessful"] = true;
@@ -274,7 +274,7 @@ namespace CWSStart.Web.Controllers
                 findMember.Save();
 
                 //Send user an email to reset password with GUID in it
-                EmailHelper.SendResetPasswordEmail(findMember.Email, expiryTime.ToString("ddMMyyyyHHmmssFFFF"));
+                EmailHelper.SendResetPasswordEmail(findMember.Email, "robot@your-site.co.uk", "CWS - Forgotten Password",  expiryTime.ToString("ddMMyyyyHHmmssFFFF"));
             }
             else
             {
