@@ -11,8 +11,10 @@
 
 @if (Convert.ToBoolean(TempData["IsSuccessful"]))
 {
-    <h1>YAY!</h1>
-    <p>You have now registered - please verify your email address to continue</p>
+    <div class="alert alert-success">
+        <h4>Yay!</h4>
+        <p>You have now registered - please verify your email address to continue</p>
+    </div>
 }
 else
 {
@@ -22,49 +24,32 @@ else
         @Html.ValidationSummary(false)
 
         <fieldset>
-            <legend>Register</legend>
-        
-            <div class="editor-label">
+            <div class="form-group">
                 @Html.LabelFor(model => model.Name)
-            </div>
-
-            <div class="editor-field">
-                @Html.EditorFor(model => model.Name)
+                @Html.TextBoxFor(model => model.Name, new{ @class = "form-control", placeholder = "Your Name" })
                 @Html.ValidationMessageFor(model => model.Name)
             </div>
-
-        
-            <div class="editor-label">
+            
+            <div class="form-group">
                 @Html.LabelFor(model => model.EmailAddress)
-            </div>
-
-            <div class="editor-field">
-                @Html.EditorFor(model => model.EmailAddress)
+                @Html.TextBoxFor(model => model.EmailAddress, new{ @class = "form-control", placeholder = "Email Address" })
                 @Html.ValidationMessageFor(model => model.EmailAddress)
             </div>
-        
-            <div class="editor-label">
+            
+            <div class="form-group">
                 @Html.LabelFor(model => model.Password)
-            </div>
-
-            <div class="editor-field">
-                @Html.EditorFor(model => model.Password)
+                @Html.PasswordFor(model => model.Password, new{ @class = "form-control", placeholder = "Password" })
                 @Html.ValidationMessageFor(model => model.Password)
             </div>
         
-            <div class="editor-label">
+            <div class="form-group">
                 @Html.LabelFor(model => model.ConfirmPassword)
-            </div>
-
-            <div class="editor-field">
-                @Html.EditorFor(model => model.ConfirmPassword)
+                @Html.PasswordFor(model => model.ConfirmPassword, new{ @class = "form-control", placeholder = "Confirm Password" })
                 @Html.ValidationMessageFor(model => model.ConfirmPassword)
             </div>
+            
+            <button type="submit" class="btn btn-default">Register</button>
         
-
-            <p>
-                <input type="submit" value="Register" />
-            </p>
         </fieldset>
     }
 }

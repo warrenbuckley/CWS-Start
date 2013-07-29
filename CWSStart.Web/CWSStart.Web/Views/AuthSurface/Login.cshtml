@@ -15,7 +15,7 @@
     <div class="alert alert-danger">
         <h4>Forgotten your password?</h4>
         <p>
-            Don't worry we all forget our passwords from time to time and <a href="/forgotten-password">may need a reminder</a>.
+            Don't worry we all forget our passwords from time to time and <a href="/forgotten-password" class="alert-link">may need a reminder</a>.
         </p>
     
         @foreach (ModelState modelState in ViewData.ModelState.Values)
@@ -39,7 +39,6 @@
 @using(Html.BeginUmbracoForm<AuthSurfaceController>("HandleLogin"))
 {
     @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true)
 
     <fieldset>
         <div class="form-group">
