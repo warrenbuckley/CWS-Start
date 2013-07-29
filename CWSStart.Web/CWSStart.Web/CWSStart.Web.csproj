@@ -257,10 +257,13 @@
   <ItemGroup>
     <Compile Include="Controllers\AuthSurfaceController.cs" />
     <Compile Include="Controllers\ContactFormSurfaceController.cs" />
+    <Compile Include="Controllers\ProfileSurfaceController.cs" />
+    <Compile Include="CWSExtensions\EmailHelper.cs" />
     <Compile Include="CWSExtensions\ExtensionMethods.cs" />
     <Compile Include="CWSExtensions\RegisterStartupEvents.cs" />
     <Compile Include="Models\ContactFormViewModel.cs" />
     <Compile Include="Models\AuthViewModels.cs" />
+    <Compile Include="Models\ProfileViewModel.cs" />
     <Compile Include="Pocos\ContactForm.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -300,6 +303,12 @@
     <Content Include="Views\CWS-News.cshtml" />
     <Content Include="Views\CWS-Contact-Form.cshtml" />
     <Content Include="Views\AuthSurface\Login.cshtml" />
+    <Content Include="Views\AuthSurface\Register.cshtml" />
+    <Content Include="Views\AuthSurface\ForgottenPassword.cshtml" />
+    <Content Include="Views\AuthSurface\ResetPassword.cshtml" />
+    <Content Include="Views\ProfileSurface\EditProfile.cshtml" />
+    <Content Include="Views\CWS-Login.cshtml" />
+    <Content Include="Views\ProfileSurface\ViewProfile.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
