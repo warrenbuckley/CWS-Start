@@ -191,13 +191,19 @@ namespace CWSStart.Web.Controllers
                 //Set the profile URL to be the member ID, so they have a unqie profile ID, until they go to set it
                 createMember.getProperty("profileURL").Value = createMember.Id;
 
+                //Set member group
+                var memberGroup = MemberGroup.GetByName("CWS-Members");
+                createMember.AddGroup(memberGroup.Id);
+
                 //Save the changes
                 createMember.Save();
             }
             catch (Exception ex)
             {
                 //EG: Duplicate email address - already exists
-                throw;
+                ModelState.AddModelError("memberCreation", ex.Message);
+                
+                return CurrentUmbracoPage();
             }
 
 
@@ -222,6 +228,9 @@ namespace CWSStart.Web.Controllers
 
             //Send out verification email, with GUID in it
             EmailHelper.SendVerifyEmail(model.EmailAddress, tempGUID.ToString());
+
+            //Update success flag (in a TempData key)
+            TempData["IsSuccessful"] = true;
 
             //All done - redirect back to page
             return RedirectToCurrentUmbracoPage();

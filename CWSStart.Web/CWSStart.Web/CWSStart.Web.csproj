@@ -309,6 +309,7 @@
     <Content Include="Views\ProfileSurface\EditProfile.cshtml" />
     <Content Include="Views\CWS-Login.cshtml" />
     <Content Include="Views\ProfileSurface\ViewProfile.cshtml" />
+    <Content Include="Views\CWS-Register.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

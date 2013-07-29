@@ -9,54 +9,62 @@
     Html.EnableUnobtrusiveJavaScript(true);
 }
 
-@using(Html.BeginUmbracoForm<AuthSurfaceController>("HandleRegister") )
+@if (Convert.ToBoolean(TempData["IsSuccessful"]))
 {
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true)
+    <h1>YAY!</h1>
+    <p>You have now registered - please verify your email address to continue</p>
+}
+else
+{
+    using (Html.BeginUmbracoForm<AuthSurfaceController>("HandleRegister"))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(false)
 
-    <fieldset>
-        <legend>Register</legend>
+        <fieldset>
+            <legend>Register</legend>
         
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Name)
-        </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Name)
+            </div>
 
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Name)
-            @Html.ValidationMessageFor(model => model.Name)
-        </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Name)
+                @Html.ValidationMessageFor(model => model.Name)
+            </div>
 
         
-        <div class="editor-label">
-            @Html.LabelFor(model => model.EmailAddress)
-        </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.EmailAddress)
+            </div>
 
-        <div class="editor-field">
-            @Html.EditorFor(model => model.EmailAddress)
-            @Html.ValidationMessageFor(model => model.EmailAddress)
-        </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.EmailAddress)
+                @Html.ValidationMessageFor(model => model.EmailAddress)
+            </div>
         
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Password)
-        </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Password)
+            </div>
 
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Password)
-            @Html.ValidationMessageFor(model => model.Password)
-        </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Password)
+                @Html.ValidationMessageFor(model => model.Password)
+            </div>
         
-        <div class="editor-label">
-            @Html.LabelFor(model => model.ConfirmPassword)
-        </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.ConfirmPassword)
+            </div>
 
-        <div class="editor-field">
-            @Html.EditorFor(model => model.ConfirmPassword)
-            @Html.ValidationMessageFor(model => model.ConfirmPassword)
-        </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.ConfirmPassword)
+                @Html.ValidationMessageFor(model => model.ConfirmPassword)
+            </div>
         
 
-        <p>
-            <input type="submit" value="Register" />
-        </p>
-    </fieldset>
+            <p>
+                <input type="submit" value="Register" />
+            </p>
+        </fieldset>
+    }
 }

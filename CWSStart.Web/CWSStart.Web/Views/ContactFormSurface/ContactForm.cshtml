@@ -17,7 +17,7 @@ else
     using (Html.BeginUmbracoForm<ContactFormSurfaceController>("HandleContactForm"))
     {
         @Html.AntiForgeryToken()
-        @Html.ValidationSummary(true)
+        @Html.ValidationSummary(false)
  
         <div>
             @Html.LabelFor(model => model.Name)
