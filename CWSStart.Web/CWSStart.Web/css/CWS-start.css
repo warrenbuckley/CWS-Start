@@ -1,3 +1,8 @@
 ﻿#wrap > .container {
     padding: 60px 15px 0;
 }
+
+
+#footer .text-muted {
+    margin: 10px 0;
+}

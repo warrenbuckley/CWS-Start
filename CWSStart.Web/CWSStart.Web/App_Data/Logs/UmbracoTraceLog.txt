@@ -81,3 +81,7 @@
 2013-07-30 10:17:18,077 [24] INFO  Umbraco.Core.PluginManager - [Thread 12] Completed resolution of types of umbraco.interfaces.ICacheRefresher, found 22 (took 14ms)
 2013-07-30 10:17:53,068 [24] INFO  Umbraco.Core.PluginManager - [Thread 6] Starting resolution types of Umbraco.Core.Persistence.Mappers.BaseMapper
 2013-07-30 10:17:53,184 [24] INFO  Umbraco.Core.PluginManager - [Thread 6] Completed resolution of types of Umbraco.Core.Persistence.Mappers.BaseMapper, found 17 (took 114ms)
+2013-07-30 10:57:08,846 [24] INFO  Umbraco.Web.Mvc.UmbracoPageResult - [Thread 105] Executing Umbraco RouteDefinition controller
+2013-07-30 10:57:08,855 [24] INFO  Umbraco.Web.Mvc.UmbracoPageResult - [Thread 105] Finished (took 7ms)
+2013-07-30 10:59:05,733 [24] INFO  Umbraco.Web.Mvc.UmbracoPageResult - [Thread 114] Executing Umbraco RouteDefinition controller
+2013-07-30 10:59:06,499 [24] INFO  Umbraco.Web.Mvc.UmbracoPageResult - [Thread 114] Finished (took 765ms)
