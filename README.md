@@ -21,3 +21,14 @@ As the source of CWS Start is an Umbraco 6 website and a SQL CE website, you can
 
 <strong>Username:</strong> admin<br/>
 <strong>Password:</strong> password
+
+##Features
+The CWS Start site has the following features:
+* Login/Logout
+* Register
+* Verify Email
+* Forgotten Password
+* Reset Password
+* News Listings
+* Photo Galleries
+* Contact Form with Logging to DB Table (via PetaPoco)
