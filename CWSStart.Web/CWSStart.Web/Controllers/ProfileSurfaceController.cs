@@ -70,60 +70,14 @@ namespace CWSStart.Web.Controllers
             //Save the member
             updateMember.Save();
 
+            //Update success flag (in a TempData key)
+            TempData["IsSuccessful"] = true;
+
             //Return the view
             return RedirectToCurrentUmbracoPage();
         }
 
-
-
-        public ActionResult RenderMemberProfile(string profileURLtoCheck)
-        {
-            //Try and find member with the QueryString value ?profileURLtoCheck=warrenbuckley
-            Member findMember = Member.GetAllAsList().FirstOrDefault(x => x.getProperty("profileURL").Value.ToString() == profileURLtoCheck);
-
-            //Create a view model
-            ViewProfileViewModel profile = new ViewProfileViewModel();
-
-            //Check if we found member
-            if (findMember != null)
-            {
-                //Increment profile view counter by one
-                int noOfProfileViews = 0;
-                int.TryParse(findMember.getProperty("numberOfProfileViews").Value.ToString(), out noOfProfileViews);
-
-                //Increment counter by one
-                findMember.getProperty("numberOfProfileViews").Value = noOfProfileViews + 1;
-
-                //Save it down to the member
-                findMember.Save();
-
-                //Got the member lets bind the data to the view model
-                profile.Name                    = findMember.Text;
-                profile.MemberID                = findMember.Id;
-                profile.EmailAddress            = findMember.Email;
-                profile.MemberType              = findMember.Groups.Values.Cast<MemberGroup>().First().Text;
-
-                profile.Description             = findMember.getProperty("description").Value.ToString();
-
-                profile.LinkedIn                = findMember.getProperty("linkedIn").Value.ToString();
-                profile.Skype                   = findMember.getProperty("skype").Value.ToString();
-                profile.Twitter                 = findMember.getProperty("twitter").Value.ToString();
-
-                profile.NumberOfLogins          = Convert.ToInt32(findMember.getProperty("numberOfLogins").Value.ToString());
-                profile.LastLoginDate           = DateTime.ParseExact(findMember.getProperty("lastLoggedIn").Value.ToString(), "dd/MM/yyyy @ HH:mm:ss", null);
-                profile.NumberOfProfileViews    = Convert.ToInt32(findMember.getProperty("numberOfProfileViews").Value.ToString());
-
-            }
-            else
-            {
-                //Couldn't find the member return a 404
-                return new HttpNotFoundResult("The member profile does not exist");
-            }
-
-            return PartialView("ViewProfile", profile);
-
-        }
-
+        
         //REMOTE Validation
         public JsonResult CheckEmailIsUsed(string emailAddress)
         {
@@ -146,8 +100,7 @@ namespace CWSStart.Web.Controllers
 
                 if (checkEmail != null)
                 {
-                    return Json(String.Format("The email address '{0}' is already in use.", emailAddress),
-                                JsonRequestBehavior.AllowGet);
+                    return Json(String.Format("The email address '{0}' is already in use.", emailAddress), JsonRequestBehavior.AllowGet);
                 }
 
                 return Json(true, JsonRequestBehavior.AllowGet);
@@ -174,14 +127,12 @@ namespace CWSStart.Web.Controllers
                 }
 
                 //Get all members where profileURL property = value from Model
-                Member checkProfileURL =
-                    Member.GetAllAsList().FirstOrDefault(x => x.getProperty("profileURL").Value.ToString() == profileURL);
+                Member checkProfileURL = Member.GetAllAsList().FirstOrDefault(x => x.getProperty("profileURL").Value.ToString() == profileURL);
 
                 //Check not null if not null then its got one in the system already
                 if (checkProfileURL != null)
                 {
-                    return Json(String.Format("The profile URL '{0}' is already in use.", profileURL),
-                                JsonRequestBehavior.AllowGet);
+                    return Json(String.Format("The profile URL '{0}' is already in use.", profileURL), JsonRequestBehavior.AllowGet);
                 }
 
 

@@ -9,82 +9,64 @@
     Html.EnableUnobtrusiveJavaScript(true);
 }
 
-@using(Html.BeginUmbracoForm<ProfileSurfaceController>("HandleEditProfile"))
+@if (Convert.ToBoolean(TempData["IsSuccessful"]))
+{
+    <div class="alert alert-success">
+        <h4>Yay!</h4>
+        <p>We have succesfully updated your profile.</p>
+    </div>
+}
+
+@using (Html.BeginUmbracoForm<ProfileSurfaceController>("HandleEditProfile"))
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>Edit Profile</legend>
-        
-        <div class="editor-label">
+        <div class="form-group">
             @Html.LabelFor(model => model.Name)
-        </div>
-
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Name)
+            @Html.TextBoxFor(model => model.Name, new {@class = "form-control", placeholder = "Your Name"})
             @Html.ValidationMessageFor(model => model.Name)
         </div>
         
-        <div class="editor-label">
+        <div class="form-group">
             @Html.LabelFor(model => model.EmailAddress)
-        </div>
-
-        <div class="editor-field">
-            @Html.EditorFor(model => model.EmailAddress)
+            @Html.TextBoxFor(model => model.EmailAddress, new {@class = "form-control", placeholder = "Email Address"})
             @Html.ValidationMessageFor(model => model.EmailAddress)
         </div>
         
-        
-        <div class="editor-label">
+        <div class="form-group">
             @Html.LabelFor(model => model.Description)
-        </div>
-
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Description)
+            @Html.TextAreaFor(model => model.Description, new {@class = "form-control", placeholder = "Description"})
             @Html.ValidationMessageFor(model => model.Description)
         </div>
         
-        <div class="editor-label">
-            @Html.LabelFor(model => model.ProfileURL)
-        </div>
-
-        <div class="editor-field">
-            @Html.EditorFor(model => model.ProfileURL)
+        <div class="form-group">
+            @Html.LabelFor(model => model.ProfileURL) (http://site.co.uk/profile/joebloggs)
+            @Html.TextBoxFor(model => model.ProfileURL, new {@class = "form-control", placeholder = "joebloggs"})
             @Html.ValidationMessageFor(model => model.ProfileURL)
         </div>
         
-        <div class="editor-label">
+        <div class="form-group">
             @Html.LabelFor(model => model.Twitter)
-        </div>
-
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Twitter)
+            @Html.TextBoxFor(model => model.Twitter, new {@class = "form-control", placeholder = "@Umbraco"})
             @Html.ValidationMessageFor(model => model.Twitter)
         </div>
         
-        <div class="editor-label">
+        <div class="form-group">
             @Html.LabelFor(model => model.LinkedIn)
-        </div>
-
-        <div class="editor-field">
-            @Html.EditorFor(model => model.LinkedIn)
+            @Html.TextBoxFor(model => model.LinkedIn, new {@class = "form-control", placeholder = "LinkedIn URL"})
             @Html.ValidationMessageFor(model => model.LinkedIn)
         </div>
         
-        <div class="editor-label">
+        <div class="form-group">
             @Html.LabelFor(model => model.Skype)
-        </div>
-
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Skype)
+            @Html.TextBoxFor(model => model.Skype, new {@class = "form-control", placeholder = "Skype Username"})
             @Html.ValidationMessageFor(model => model.Skype)
         </div>
         
         @Html.HiddenFor(model => model.MemberID)
 
-        <p>
-            <input type="submit" value="Update" />
-        </p>
+        <button type="submit" class="btn btn-default">Update Profile</button>
     </fieldset>
 }

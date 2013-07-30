@@ -265,6 +265,7 @@
     <Compile Include="Controllers\AuthSurfaceController.cs" />
     <Compile Include="Controllers\ContactFormSurfaceController.cs" />
     <Compile Include="Controllers\ProfileSurfaceController.cs" />
+    <Compile Include="Controllers\ViewProfileController.cs" />
     <Compile Include="CWSExtensions\EmailHelper.cs" />
     <Compile Include="CWSExtensions\ExtensionMethods.cs" />
     <Compile Include="CWSExtensions\RegisterStartupEvents.cs" />
@@ -315,7 +316,7 @@
     <Content Include="Views\AuthSurface\ResetPassword.cshtml" />
     <Content Include="Views\ProfileSurface\EditProfile.cshtml" />
     <Content Include="Views\CWS-Login.cshtml" />
-    <Content Include="Views\ProfileSurface\ViewProfile.cshtml" />
+    <Content Include="Views\ViewProfile\View.cshtml" />
     <Content Include="Views\CWS-Register.cshtml" />
     <Content Include="Views\CWS-Forgotten-Password.cshtml" />
     <Content Include="Views\CWS-Reset-Password.cshtml" />

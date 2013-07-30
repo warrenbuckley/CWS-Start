@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
+using System.Web.Routing;
 using CWSStart.Web.Pocos;
 using umbraco.BusinessLogic;
 using umbraco.cms.businesslogic.member;
@@ -55,6 +57,17 @@ namespace CWSStart.Web.CWSExtensions
                 //Create DB table - and set overwrite to false
                 db.CreateTable<ContactForm>(false);
             }
+
+
+            //Create our custom MVC route for our member profile pages
+            RouteTable.Routes.MapRoute(
+                "memberProfileRoute",
+                "profile/{profileURLtoCheck}",
+                new
+                {
+                    controller  = "ViewProfile",
+                    action      = "RenderMemberProfile"
+                });        
         }
 
         protected void AddCustomMemberGroup()

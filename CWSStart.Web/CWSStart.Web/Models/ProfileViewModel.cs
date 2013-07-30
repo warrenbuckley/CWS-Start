@@ -16,17 +16,15 @@ namespace CWSStart.Web.Models
         [Required]
         public string Name { get; set; }
 
-        [DisplayName("Email address")]
+        [DisplayName("Email Address")]
         [Required(ErrorMessage = "Please enter your email address")]
         [EmailAddress(ErrorMessage = "Please enter a valid email address")]
         [Remote("CheckEmailIsUsed", "ProfileSurface", ErrorMessage = "The email address has already been registered")]
         public string EmailAddress { get; set; }
-
-        [HiddenInput(DisplayValue = false)]
-        public string MemberType { get; set; }
-
+        
         [Required]
         [Remote("CheckProfileURLAvailable", "ProfileSurface", ErrorMessage = "The profile URL is already in use")]
+        [DisplayName("Profile URL")]
         public string ProfileURL { get; set; }
 
         public string Description { get; set; }
