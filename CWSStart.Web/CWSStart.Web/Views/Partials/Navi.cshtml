@@ -1,1 +1,56 @@
-﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<dynamic>
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<Umbraco.Web.Models.RenderModel>
+
+@{
+    var home    = Model.Content.AncestorOrSelf("CWS-Home");
+    var pages   = home.Children.Where(x => x.IsVisible());
+    
+}
+
+<div class="navbar navbar-fixed-top">
+    <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">CWS Start</a>
+
+        <div class="nav-collapse collapse">
+            <ul class="nav navbar-nav">
+                @foreach (var page in pages)
+                {
+                    var isSelected      = page.IsAncestorOrSelf(Model.Content, "active");
+                    var hasChildren     = page.Children.Any() ? "dropdown" : string.Empty;
+                    
+                    <li class="@isSelected @hasChildren">
+                        @if (page.Children.Any())
+                        {
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">@page.Name <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                @foreach (var child in page.Children)
+                                {
+                                    var isChildSelected = child.IsAncestorOrSelf(Model.Content, "active");
+                                    
+                                    <li class="@isChildSelected">
+                                        <a href="@child.Url">@child.Name</a>
+                                    </li>
+                                }
+                            </ul>
+                        }
+                        else
+                        {
+                            <a href="@page.Url">@page.Name</a>
+                        }
+                    </li>
+                }
+                
+                @if (Umbraco.MemberIsLoggedOn())
+                {
+                    <li>
+                        @Html.ActionLink("Logout", "Logout", "AuthSurface")
+                    </li>
+                }
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</div>

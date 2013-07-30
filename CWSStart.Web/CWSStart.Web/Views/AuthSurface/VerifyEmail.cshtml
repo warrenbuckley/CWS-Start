@@ -1,0 +1,17 @@
+﻿@using System.Web.Mvc.Html
+@using Umbraco.Web
+
+@if (Convert.ToBoolean(TempData["IsSuccessful"]))
+{
+    <div class="alert alert-success">
+        <h4>Yay!</h4>
+        <p>We have now verified your email address and can now <a href="/login" class="alert-link">login</a></p>
+    </div>
+}
+else
+{
+   <div class="alert alert-danger">
+        <h4>Boo!</h4>
+        <p>Unfortunately we was unable to verify you with those details, please try again</p>
+    </div>
+}

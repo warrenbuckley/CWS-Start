@@ -310,7 +310,7 @@ namespace CWSStart.Web.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return PartialView("ResetPassword", model);
+                return CurrentUmbracoPage();
             }
 
             //Get member from email
@@ -404,12 +404,18 @@ namespace CWSStart.Web.Controllers
             }
             else
             {
+                //Update success flag (in a TempData key)
+                TempData["IsSuccessful"] = false;
+
                 //Couldn't find them - most likely invalid GUID
-                return RedirectToUmbracoPage(home);
+                return PartialView("VerifyEmail");
             }
 
+            //Update success flag (in a TempData key)
+            TempData["IsSuccessful"] = true;
+
             //All sorted let's redirect to root/homepage
-            return RedirectToUmbracoPage(home);
+            return PartialView("VerifyEmail");
         }
 
         //REMOTE - Validation

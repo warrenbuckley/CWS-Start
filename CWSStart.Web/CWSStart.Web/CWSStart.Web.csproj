@@ -320,6 +320,8 @@
     <Content Include="Views\CWS-Forgotten-Password.cshtml" />
     <Content Include="Views\CWS-Reset-Password.cshtml" />
     <Content Include="Views\CWS-Verify-Email.cshtml" />
+    <Content Include="Views\AuthSurface\VerifyEmail.cshtml" />
+    <Content Include="Views\Partials\Navi.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -330,7 +332,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\MacroPartials\" />
-    <Folder Include="Views\Partials\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
