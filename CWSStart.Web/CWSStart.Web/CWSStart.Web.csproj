@@ -257,6 +257,7 @@
     <Content Include="umbraco\Images\Umbraco\CWS-user.png" />
     <Content Include="umbraco\Images\Umbraco\CWS-users.png" />
     <Content Include="umbraco\Images\Umbraco\CWS-user--plus.png" />
+    <Content Include="usercontrols\Dashboard\ViewContactLogs.ascx" />
     <Content Include="usercontrols\dummy.txt" />
     <Content Include="Web.config" />
     <Content Include="xslt\dummy.txt" />
@@ -274,6 +275,13 @@
     <Compile Include="Models\ProfileViewModel.cs" />
     <Compile Include="Pocos\ContactForm.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="usercontrols\Dashboard\ViewContactLogs.ascx.cs">
+      <DependentUpon>ViewContactLogs.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="usercontrols\Dashboard\ViewContactLogs.ascx.designer.cs">
+      <DependentUpon>ViewContactLogs.ascx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

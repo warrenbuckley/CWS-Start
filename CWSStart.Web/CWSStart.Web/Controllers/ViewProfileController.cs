@@ -16,10 +16,14 @@ namespace CWSStart.Web.Controllers
 {
     public class ViewProfileController : PluginController
     {
+        public ViewProfileController() : this(UmbracoContext.Current)
+        {            
+        }
+
         public ViewProfileController(UmbracoContext umbracoContext) : base(umbracoContext)
         {
-            
         }
+
 
         public ActionResult RenderMemberProfile(string profileURLtoCheck)
         {
@@ -63,9 +67,9 @@ namespace CWSStart.Web.Controllers
                 //Couldn't find the member return a 404
                 return new HttpNotFoundResult("The member profile does not exist");
             }
-
+            
             //Get Edit Profile as the content node to pass through with our model
-            return View("View", CreateRenderModel(Umbraco.ContentAtRoot()));
+            return View("View", profile);
         }
 
         private RenderModel CreateRenderModel(IPublishedContent content)
