@@ -8,6 +8,7 @@ using System.Web.Security;
 using CWSStart.Web.CWSExtensions;
 using umbraco.BusinessLogic;
 using umbraco.cms.businesslogic.member;
+using Umbraco.Web;
 using Umbraco.Web.Mvc;
 using CWSStart.Web.Models;
 
@@ -107,7 +108,14 @@ namespace CWSStart.Web.Controllers
                         else
                         {
                             //User has not verified their email yet
-                            ModelState.AddModelError("LoginForm.", "Email account has not been verified");
+                            ModelState.AddModelError("LoginForm.", "Email account has not been verified. A verification email has been resent to you.");
+
+                            //Get the verify guid on the member (so we can resend out verification email)
+                            var verifyGUID = checkMember.getProperty("emailVerifyGUID").Value.ToString();
+
+                            //Send out verification email, with GUID in it
+                            EmailHelper.SendVerifyEmail(checkMember.Email, "robot@your-site.co.uk", "CWS - Verify Email", verifyGUID);
+
                             return CurrentUmbracoPage();
                         }
                     }
@@ -379,6 +387,9 @@ namespace CWSStart.Web.Controllers
         /// <returns></returns>
         public ActionResult RenderVerifyEmail(string verifyGUID)
         {
+            //Homepage node
+            var home = CurrentPage.AncestorOrSelf("CWS-Home");
+
             //Auto binds and gets guid from the querystring
             Member findMember = Member.GetAllAsList().SingleOrDefault(x => x.getProperty("emailVerifyGUID").Value.ToString() == verifyGUID);
 
@@ -394,11 +405,11 @@ namespace CWSStart.Web.Controllers
             else
             {
                 //Couldn't find them - most likely invalid GUID
-                return Redirect("/");
+                return RedirectToUmbracoPage(home);
             }
 
-            //Just in case...
-            return Redirect("/");
+            //All sorted let's redirect to root/homepage
+            return RedirectToUmbracoPage(home);
         }
 
         //REMOTE - Validation
