@@ -228,12 +228,15 @@
     <Content Include="bin\x86\sqlcese40.dll" />
     <Content Include="css\bootstrap.css" />
     <Content Include="css\bootstrap.min.css" />
+    <Content Include="css\CWS-log-viewer.css" />
     <Content Include="css\CWS-start.css" />
     <Content Include="css\sticky-footer.css" />
     <Content Include="css\dummy.txt" />
     <Content Include="default.aspx" />
     <Content Include="macroScripts\dummy.txt" />
     <Content Include="masterpages\dummy.txt" />
+    <Content Include="media\1001\venue.jpg" />
+    <Content Include="media\1001\venue_thumb.jpg" />
     <Content Include="media\dummy.txt" />
     <Content Include="scripts\bootstrap.js" />
     <Content Include="scripts\bootstrap.min.js" />
@@ -257,6 +260,8 @@
     <Content Include="umbraco\Images\Umbraco\CWS-user.png" />
     <Content Include="umbraco\Images\Umbraco\CWS-users.png" />
     <Content Include="umbraco\Images\Umbraco\CWS-user--plus.png" />
+    <Content Include="umbraco\Images\Umbraco\CWS-sitemap-image.png" />
+    <Content Include="umbraco\Images\Umbraco\CWS-magnifier.png" />
     <Content Include="usercontrols\Dashboard\ViewContactLogs.ascx" />
     <Content Include="usercontrols\dummy.txt" />
     <Content Include="Web.config" />
@@ -331,6 +336,12 @@
     <Content Include="Views\CWS-Verify-Email.cshtml" />
     <Content Include="Views\AuthSurface\VerifyEmail.cshtml" />
     <Content Include="Views\Partials\Navi.cshtml" />
+    <Content Include="Views\CWS-XML-Sitemap.cshtml" />
+    <Content Include="Views\CWS-Profile-Edit.cshtml" />
+    <Content Include="Views\CWS-Search.cshtml" />
+    <Content Include="Views\CWS-Two-Column.cshtml" />
+    <Content Include="Views\Partials\SubNavi.cshtml" />
+    <Content Include="Views\CWS-Photo.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
