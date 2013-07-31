@@ -1,0 +1,14 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    Layout = "CWS-Master.cshtml";
+}
+
+<h2>@Model.Content.Name</h2>
+<div class="row">
+    <div class="col-9">
+        @RenderSection("mainColumn")
+    </div>
+    <div class="col-3">
+        @RenderSection("subColumn")
+    </div>
+</div>

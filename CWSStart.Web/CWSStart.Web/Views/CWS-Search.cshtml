@@ -20,10 +20,25 @@ else
     <h4>You searched for <em>@query</em></h4>
     <h5>Displaying @results.Count() results</h5>
     
+    <hr/>
+    
     foreach (var result in results)
     {
-        <h4>@result.Name</h4>
+        <h4><a href="@result.Url">@result.Name</a></h4>
         <h5><em>@result.UrlWithDomain()</em></h5>
+
+        if (result.HasProperty("bodyText") && result.HasValue("bodyText"))
+        {
+            var bodyText    = result.GetProperty("bodyText").Value.ToString();
+            bodyText        = library.StripHtml(bodyText);
+            bodyText        = library.TruncateString(bodyText, 100, "...");
+            
+            <p>
+                @bodyText
+            </p>
+        }
+    
+        <hr/>
     }
 }
 

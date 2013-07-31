@@ -1,0 +1,30 @@
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<Umbraco.Web.Models.RenderModel>
+
+@{
+    //Walk up the tree
+    var topNavItem = Model.Content.Parent;
+
+    //Check currentpage is same as topNaviItem Id
+    var isSelected = topNavItem.Id == Model.Content.Id ? "active" : string.Empty;
+    
+    //Get Child  Pages of Current Page
+    var pages = topNavItem.Children.Where(x => x.IsVisible());
+}
+
+<ul class="nav nav-pills nav-stacked">
+    <li class="@isSelected">
+        <a href="@topNavItem.Url">
+            @topNavItem.Name
+        </a>
+    </li>
+    @foreach (var page in pages)
+    {
+        var isPageSelected = page.IsAncestorOrSelf(Model.Content) ? "active" : string.Empty;
+        
+        <li class="@isPageSelected">
+            <a href="@page.Url">
+                @page.Name
+            </a>
+        </li>
+    }
+</ul>
