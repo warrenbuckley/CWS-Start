@@ -1,4 +1,21 @@
 ﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
 @{
     Layout = "CWS-Master.cshtml";
+
+    var photos = Model.Content.Children.Where(x => x.IsVisible());
+}
+
+<h2>@Model.Content.Name</h2>
+@foreach (var group in photos.InGroupsOf(4))
+{
+    <div class="row">
+        @foreach (var photo in group)
+        {
+            <div class="col-lg-3">
+                <a href="@photo.Url" class="thumbnail">
+                    <img src="@photo.GetProperty("photo").Value" alt="@photo.Name" />
+                </a>
+            </div>
+        }
+    </div>
 }

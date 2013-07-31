@@ -1,4 +1,27 @@
 ﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
 @{
     Layout = "CWS-Master.cshtml";
+
+    var galleries = Model.Content.Children.Where(x => x.IsVisible());
+}
+
+<h2>@Model.Content.Name</h2>
+@foreach (var group in galleries.InGroupsOf(4))
+{
+    <div class="row">
+        @foreach (var gallery in group)
+        {
+            //Get first photo in Gallery
+            var firstPhoto = gallery.Children.FirstOrDefault();
+
+            if (firstPhoto != null)
+            {
+                <div class="col-lg-3">
+                    <a href="@gallery.Url" class="thumbnail">
+                        <img src="@firstPhoto.GetProperty("photo").Value" alt="@firstPhoto.Name" />
+                    </a>
+                </div>
+            }
+        }
+    </div>
 }

@@ -1,0 +1,16 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    Layout = "CWS-Master.cshtml";
+}
+
+<h2>@Model.Content.Name</h2>
+<img src="@Model.Content.GetProperty("photo").Value"/>
+
+<h4>
+    Photo taken by
+    <em>
+        <a href="@Model.Content.GetProperty("photoCreditLink").Value" target="_blank">
+            @Model.Content.GetProperty("photoCredit").Value
+        </a>
+    </em>
+</h4>
