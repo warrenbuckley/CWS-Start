@@ -1,0 +1,30 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    Layout = "CWS-Master.cshtml";
+
+    //Get the query from the form that has been posted
+    var query = Request.Form["q"];
+}
+
+@if (string.IsNullOrEmpty(query))
+{
+    <h2>Search Results</h2>
+    <h4>Please enter a search query</h4>
+}
+else
+{
+    //Do a simple search with the query
+    var results = Umbraco.TypedSearch(query, true, null);
+    
+    <h2>Search Results</h2>
+    <h4>You searched for <em>@query</em></h4>
+    <h5>Displaying @results.Count() results</h5>
+    
+    foreach (var result in results)
+    {
+        <h4>@result.Name</h4>
+        <h5><em>@result.UrlWithDomain()</em></h5>
+    }
+}
+
+

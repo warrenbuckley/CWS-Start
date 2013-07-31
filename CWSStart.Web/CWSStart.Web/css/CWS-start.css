@@ -2,6 +2,9 @@
     padding: 60px 15px 0;
 }
 
+.navbar-form .form-control {
+    width: auto;
+}
 
 #footer .text-muted {
     margin: 10px 0;
