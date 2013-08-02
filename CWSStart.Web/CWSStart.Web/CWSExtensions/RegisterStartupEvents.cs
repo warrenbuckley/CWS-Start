@@ -66,7 +66,7 @@ namespace CWSStart.Web.CWSExtensions
                 new
                 {
                     controller  = "ViewProfile",
-                    action      = "RenderMemberProfile"
+                    action      = "Index"
                 });        
         }
 

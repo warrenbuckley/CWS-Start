@@ -329,7 +329,7 @@
     <Content Include="Views\AuthSurface\ResetPassword.cshtml" />
     <Content Include="Views\ProfileSurface\EditProfile.cshtml" />
     <Content Include="Views\CWS-Login.cshtml" />
-    <Content Include="Views\ViewProfile\View.cshtml" />
+    <Content Include="Views\ViewProfile\Index.cshtml" />
     <Content Include="Views\CWS-Register.cshtml" />
     <Content Include="Views\CWS-Forgotten-Password.cshtml" />
     <Content Include="Views\CWS-Reset-Password.cshtml" />
