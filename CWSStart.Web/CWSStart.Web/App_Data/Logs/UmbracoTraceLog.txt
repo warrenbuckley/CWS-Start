@@ -1266,3 +1266,15 @@ System.NullReferenceException: Object reference not set to an instance of an obj
    at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
    at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
 2013-08-02 16:17:43,392 [61] INFO  Umbraco.Core.Publishing.PublishingStrategy - [Thread 30] Content 'News' with Id '1062' has been published.
+2013-08-02 16:21:39,325 [61] INFO  Umbraco.Core.Publishing.PublishingStrategy - [Thread 68] Content 'Home' with Id '1056' has been published.
+2013-08-02 16:22:37,276 [61] INFO  Umbraco.Core.Publishing.PublishingStrategy - [Thread 14] Content 'Home' with Id '1056' has been published.
+2013-08-02 16:22:43,279 [61] INFO  Umbraco.Core.Publishing.PublishingStrategy - [Thread 14] Content 'Home' with Id '1056' has been published.
+2013-08-02 16:24:41,600 [61] INFO  Umbraco.Core.Publishing.PublishingStrategy - [Thread 18] Content 'Home' with Id '1056' has been published.
+2013-08-02 16:25:04,755 [61] INFO  Umbraco.Core.Publishing.PublishingStrategy - [Thread 20] Content 'Home' with Id '1056' has been published.
+2013-08-02 16:29:29,389 [61] INFO  Umbraco.Core.Publishing.PublishingStrategy - [Thread 25] Content 'Hoodie' with Id '1105' has been published.
+2013-08-02 16:30:43,574 [61] INFO  umbraco.cms.businesslogic.web.Document - [Thread 48] New document 1114
+2013-08-02 16:32:16,185 [61] INFO  Umbraco.Core.Publishing.PublishingStrategy - [Thread 48] Content 'Keynote' with Id '1114' has been published.
+2013-08-02 16:32:34,782 [61] INFO  umbraco.cms.businesslogic.web.Document - [Thread 60] New document 1115
+2013-08-02 16:33:53,973 [61] INFO  Umbraco.Core.Publishing.PublishingStrategy - [Thread 46] Content 'Dinner' with Id '1115' has been published.
+2013-08-02 16:35:14,818 [61] INFO  umbraco.cms.businesslogic.web.Document - [Thread 41] New document 1116
+2013-08-02 16:35:27,881 [61] INFO  Umbraco.Core.Publishing.PublishingStrategy - [Thread 8] Content 'Ole Earling' with Id '1116' has been published.
