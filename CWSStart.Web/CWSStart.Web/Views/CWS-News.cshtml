@@ -1,4 +1,32 @@
 ﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
 @{
-    Layout = "CWS-Master.cshtml";
+    Layout = "CWS-Two-Column.cshtml";
+}
+@section mainColumn {
+    
+    @foreach (var newsItem in Model.Content.Children.Where(x => x.IsVisible()))
+    {
+        <h3><a href="@newsItem.Url">@newsItem.Name</a></h3>
+        <h5><em>@newsItem.CreateDate.ToString("dd MMMM yy")</em></h5>
+        
+        if (newsItem.HasProperty("bodyText") && newsItem.HasValue("bodyText"))
+        {
+            var bodyText    = newsItem.GetProperty("bodyText").Value.ToString();
+            bodyText        = library.StripHtml(bodyText);
+            bodyText        = library.TruncateString(bodyText, 100, "...");
+            
+            <p>
+                @bodyText
+            </p>
+        }
+        
+        <hr/>
+    }
+
+    @Html.Raw(Model.Content.GetProperty("bodyText").Value)
+}
+
+@section subColumn {
+    @Html.Partial("~/Views/Partials/SubNavi.cshtml")
+    @Html.Raw(Model.Content.GetProperty("subText").Value)
 }

@@ -1,4 +1,13 @@
 ﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
 @{
-    Layout = "CWS-Master.cshtml";
+    Layout = "CWS-Two-Column.cshtml";
+}
+
+@section mainColumn {
+    @Html.Raw(Model.Content.GetProperty("bodyText").Value)
+}
+
+@section subColumn {
+    @Html.Partial("~/Views/Partials/SubNavi.cshtml")
+    @Html.Raw(Model.Content.GetProperty("subText").Value)
 }
