@@ -1,8 +1,8 @@
-@inherits Umbraco.Web.Mvc.UmbracoViewPage<dynamic>
+@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
 
 @{
     //Walk up the tree
-    var topNavItem = Model.Content.Parent;
+    var topNavItem = Model.Content.Level > 2 ? Model.Content.Parent : Model.Content;
 
     //Check currentpage is same as topNaviItem Id
     var isSelected = topNavItem.Id == Model.Content.Id ? "active" : string.Empty;
