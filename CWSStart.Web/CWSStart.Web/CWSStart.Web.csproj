@@ -271,6 +271,7 @@
     <Compile Include="Controllers\AuthSurfaceController.cs" />
     <Compile Include="Controllers\ContactFormSurfaceController.cs" />
     <Compile Include="Controllers\ProfileSurfaceController.cs" />
+    <Compile Include="Controllers\SiteChromeSurfaceController.cs" />
     <Compile Include="Controllers\ViewProfileController.cs" />
     <Compile Include="CWSExtensions\EmailHelper.cs" />
     <Compile Include="CWSExtensions\ExtensionMethods.cs" />
@@ -335,7 +336,7 @@
     <Content Include="Views\CWS-Reset-Password.cshtml" />
     <Content Include="Views\CWS-Verify-Email.cshtml" />
     <Content Include="Views\AuthSurface\VerifyEmail.cshtml" />
-    <Content Include="Views\Partials\Navi.cshtml" />
+    <Content Include="Views\SiteChromeSurface\Navi.cshtml" />
     <Content Include="Views\CWS-XML-Sitemap.cshtml" />
     <Content Include="Views\CWS-Profile-Edit.cshtml" />
     <Content Include="Views\CWS-Search.cshtml" />

@@ -1,10 +1,9 @@
-﻿
-@model CWSStart.Web.Models.ViewProfileViewModel
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<IEnumerable<IPublishedContent>>
 
 @{
-    var home    = Model.Content.AncestorOrSelf("CWS-Home");
-    var pages   = home.Children.Where(x => x.IsVisible());
-    
+    var pages           = Model;
+    var currentPageID   = UmbracoContext.Current.PageId ?? Umbraco.TypedContentAtRoot().Single(x => x.DocumentTypeAlias == "CWS-Home").Id;
+    var currentPage     = Umbraco.TypedContent(currentPageID);
 }
 
 <div class="navbar navbar-fixed-top">
@@ -20,7 +19,7 @@
             <ul class="nav navbar-nav">
                 @foreach (var page in pages)
                 {
-                    var isSelected      = page.IsAncestorOrSelf(Model.Content, "active");
+                    var isSelected      = page.IsAncestorOrSelf(currentPage, "active");
                     var hasChildren     = page.Children.Any() ? "dropdown" : string.Empty;
                     
                     <li class="@isSelected @hasChildren">
@@ -30,7 +29,7 @@
                             <ul class="dropdown-menu">
                                 @foreach (var child in page.Children)
                                 {
-                                    var isChildSelected = child.IsAncestorOrSelf(Model.Content, "active");
+                                    var isChildSelected = child.IsAncestorOrSelf(currentPage, "active");
                                     
                                     <li class="@isChildSelected">
                                         <a href="@child.Url">@child.Name</a>

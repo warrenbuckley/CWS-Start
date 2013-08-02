@@ -44,6 +44,7 @@ namespace CWSStart.Web.Models
 
     public class ViewProfileViewModel
     {
+
         [HiddenInput(DisplayValue = false)]
         public int MemberID { get; set; }
 
