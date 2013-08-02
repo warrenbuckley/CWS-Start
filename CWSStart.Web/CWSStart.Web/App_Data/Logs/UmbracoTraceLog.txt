@@ -1278,3 +1278,10 @@ System.NullReferenceException: Object reference not set to an instance of an obj
 2013-08-02 16:33:53,973 [61] INFO  Umbraco.Core.Publishing.PublishingStrategy - [Thread 46] Content 'Dinner' with Id '1115' has been published.
 2013-08-02 16:35:14,818 [61] INFO  umbraco.cms.businesslogic.web.Document - [Thread 41] New document 1116
 2013-08-02 16:35:27,881 [61] INFO  Umbraco.Core.Publishing.PublishingStrategy - [Thread 8] Content 'Ole Earling' with Id '1116' has been published.
+2013-08-02 16:43:28,961 [61] INFO  umbraco.content - [Thread 13] Loading content from database...
+2013-08-02 16:47:50,236 [61] ERROR umbraco.cms.businesslogic.packager.CreatedPackage - [Thread 75] An error occurred
+System.IO.IOException: The process cannot access the file '550e7874-ca3b-4cdf-a227-70cae42ca825_hoodie.jpg' because it is being used by another process.
+   at System.IO.Directory.DeleteHelper(String fullPath, String userPath, Boolean recursive, Boolean throwOnTopLevelDirectoryNotFound)
+   at System.IO.Directory.Delete(String fullPath, String userPath, Boolean recursive, Boolean checkHost)
+   at System.IO.Directory.Delete(String path, Boolean recursive)
+   at umbraco.cms.businesslogic.packager.CreatedPackage.Publish()
