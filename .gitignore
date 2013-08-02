@@ -12,7 +12,7 @@
 *.dylib
 
 # Executables
-*.exe
+#*.exe
 *.out
 *.app
 CWSStart.Web/CWSStart.Web/App_Data/TEMP/ClientDependency/*
