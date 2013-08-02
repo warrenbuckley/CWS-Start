@@ -25,27 +25,27 @@ else
 
         <fieldset>
             <div class="form-group">
-                @Html.LabelFor(model => model.Name)
+                @Html.LabelFor(model => model.Name, new { @class = "control-label"})
                 @Html.TextBoxFor(model => model.Name, new{ @class = "form-control", placeholder = "Your Name" })
-                @Html.ValidationMessageFor(model => model.Name)
+                @Html.ValidationMessageFor(model => model.Name, string.Empty, new { @class= "help-block" })
             </div>
             
             <div class="form-group">
-                @Html.LabelFor(model => model.EmailAddress)
+                @Html.LabelFor(model => model.EmailAddress, new { @class = "control-label"})
                 @Html.TextBoxFor(model => model.EmailAddress, new{ @class = "form-control", placeholder = "Email Address" })
-                @Html.ValidationMessageFor(model => model.EmailAddress)
+                @Html.ValidationMessageFor(model => model.EmailAddress, string.Empty, new { @class= "help-block" })
             </div>
             
             <div class="form-group">
-                @Html.LabelFor(model => model.Password)
+                @Html.LabelFor(model => model.Password, new { @class = "control-label"})
                 @Html.PasswordFor(model => model.Password, new{ @class = "form-control", placeholder = "Password" })
-                @Html.ValidationMessageFor(model => model.Password)
+                @Html.ValidationMessageFor(model => model.Password, string.Empty, new { @class= "help-block" })
             </div>
         
             <div class="form-group">
-                @Html.LabelFor(model => model.ConfirmPassword)
+                @Html.LabelFor(model => model.ConfirmPassword, new { @class = "control-label"})
                 @Html.PasswordFor(model => model.ConfirmPassword, new{ @class = "form-control", placeholder = "Confirm Password" })
-                @Html.ValidationMessageFor(model => model.ConfirmPassword)
+                @Html.ValidationMessageFor(model => model.ConfirmPassword, string.Empty, new { @class= "help-block" })
             </div>
             
             <button type="submit" class="btn btn-default">Register</button>

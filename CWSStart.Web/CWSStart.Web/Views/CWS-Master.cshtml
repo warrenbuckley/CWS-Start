@@ -59,6 +59,17 @@
         <script src="http://ajax.aspnetcdn.com/ajax/mvc/3.0/jquery.validate.unobtrusive.min.js"></script>
         <script src="http://ajax.aspnetcdn.com/ajax/mvc/3.0/jquery.unobtrusive-ajax.min.js"></script>
         
+        <script type="text/javascript">
+            $.validator.defaults.highlight = function (element, errorClass, validClass) {
+                $(element).closest(".form-group").addClass("has-error");
+            };
+            
+            $.validator.defaults.unhighlight = function (element, errorClass, validClass) {
+                $(element).closest(".form-group").removeClass("has-error");
+            };
+            
+        </script>
+
         
         @RenderSection("Scripts", false)
     </body>

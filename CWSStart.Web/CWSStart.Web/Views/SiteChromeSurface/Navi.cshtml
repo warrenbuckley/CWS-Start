@@ -21,27 +21,19 @@
                 {
                     var isSelected      = page.IsAncestorOrSelf(currentPage, "active");
                     var hasChildren     = page.Children.Any() ? "dropdown" : string.Empty;
+
+                    var hideInNavi = Convert.ToBoolean(page.GetPropertyValue("hideInNavigationLoggedIn"));
+
+                    //If member is logged in AND hide in navi is not true
+                    if (Umbraco.MemberIsLoggedOn() && !hideInNavi)
+                    {
+                        @renderNaviItem(page, currentPage, isSelected, hasChildren);
+                    }
+                    else if (!Umbraco.MemberIsLoggedOn() && page.IsVisible())
+                    {
+                        @renderNaviItem(page, currentPage, isSelected, hasChildren);
+                    }
                     
-                    <li class="@isSelected @hasChildren">
-                        @if (page.Children.Any())
-                        {
-                            <a href="@page.Url" class="dropdown-toggle" data-toggle="dropdown">@page.Name <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                @foreach (var child in page.Children)
-                                {
-                                    var isChildSelected = child.IsAncestorOrSelf(currentPage, "active");
-                                    
-                                    <li class="@isChildSelected">
-                                        <a href="@child.Url">@child.Name</a>
-                                    </li>
-                                }
-                            </ul>
-                        }
-                        else
-                        {
-                            <a href="@page.Url">@page.Name</a>
-                        }
-                    </li>
                 }
                 
                 @if (Umbraco.MemberIsLoggedOn())
@@ -60,3 +52,26 @@
         </div><!--/.nav-collapse -->
     </div>
 </div>
+
+@helper renderNaviItem (IPublishedContent page, IPublishedContent currentPage, HtmlString isSelected, string hasChildren) {
+    <li class="@isSelected @hasChildren">
+        @if (page.Children.Any())
+        {
+            <a href="@page.Url" class="dropdown-toggle" data-toggle="dropdown">@page.Name <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+                @foreach (var child in page.Children)
+                {
+                    var isChildSelected = child.IsAncestorOrSelf(currentPage, "active");
+                                    
+                    <li class="@isChildSelected">
+                        <a href="@child.Url">@child.Name</a>
+                    </li>
+                }
+            </ul>
+        }
+        else
+        {
+            <a href="@page.Url">@page.Name</a>
+        }
+    </li>
+}
