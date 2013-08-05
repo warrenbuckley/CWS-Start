@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Mail;
 using System.Web;
 using CWSStart.Web.Models;
+using Umbraco.Web;
 
 namespace CWSStart.Web.CWSExtensions
 {
@@ -13,6 +14,31 @@ namespace CWSStart.Web.CWSExtensions
         private const string SMTPServer     = "smtp.mandrillapp.com";
         private const string SMTPUser       = "warren@creativewebspecialist.co.uk";
         private const string SMTPPassword   = "h4GMK-gX9CB7KXjUePMNaA";
+
+        public static SmtpClient GetSmtpClient()
+        {
+
+            //Get default SMTP server settings from our hompage node
+            var homepage = UmbracoContext.Current.ContentCache.GetAtRoot().SingleOrDefault(x => x.DocumentTypeAlias == "CWS-Home");
+
+            //Get values from homenode, with fallback to Mandrill constant's above
+            var server  = homepage.GetPropertyValue("smtpServer", SMTPServer).ToString();
+            var user    = homepage.GetPropertyValue("smtpUser", SMTPUser).ToString();
+            var pass    = homepage.GetPropertyValue("smtpPassword", SMTPPassword).ToString();
+
+            //Do a null check just in case homepage node values are empty (fallback to Constants)
+            server  = String.IsNullOrEmpty(server) ? SMTPServer : server;
+            user    = String.IsNullOrEmpty(user) ? SMTPUser : user;
+            pass    = String.IsNullOrEmpty(pass) ? SMTPPassword : pass;
+
+            //Create new SmtpClient
+            var smtp            = new SmtpClient();
+            smtp.Host           = server;
+            smtp.Credentials    = new NetworkCredential(user, pass);
+
+            //Return the SMTP object
+            return smtp;
+        }
 
 
         public static void SendContactEmail(ContactFormViewModel model, string emailTo, string emailSubject)
@@ -29,10 +55,8 @@ namespace CWSStart.Web.CWSExtensions
             try
             {
                 //Connect to SMTP using MailChimp transactional email service Mandrill
-                //This uses a test account - please use your own SMTP settings or set them in the web.config please
-                SmtpClient smtp     = new SmtpClient();
-                smtp.Host           = SMTPServer;
-                smtp.Credentials    = new NetworkCredential(SMTPUser, SMTPPassword);
+                //This uses the values on the homenode OR fallback to test details above
+                SmtpClient smtp = GetSmtpClient();
 
                 //Try & send the email with the SMTP settings
                 smtp.Send(email);
@@ -67,10 +91,9 @@ namespace CWSStart.Web.CWSExtensions
             try
             {
                 //Connect to SMTP using MailChimp transactional email service Mandrill
-                //This uses a test account - please use your own SMTP settings or set them in the web.config please
-                SmtpClient smtp     = new SmtpClient();
-                smtp.Host           = SMTPServer;
-                smtp.Credentials    = new NetworkCredential(SMTPUser, SMTPPassword);
+                //Connect to SMTP using MailChimp transactional email service Mandrill
+                //This uses the values on the homenode OR fallback to test details above
+                SmtpClient smtp = GetSmtpClient();
 
                 //Try & send the email with the SMTP settings
                 smtp.Send(email);
@@ -104,10 +127,8 @@ namespace CWSStart.Web.CWSExtensions
             try
             {
                 //Connect to SMTP using MailChimp transactional email service Mandrill
-                //This uses a test account - please use your own SMTP settings or set them in the web.config please
-                SmtpClient smtp = new SmtpClient();
-                smtp.Host = SMTPServer;
-                smtp.Credentials = new NetworkCredential(SMTPUser, SMTPPassword);
+                //This uses the values on the homenode OR fallback to test details above
+                SmtpClient smtp = GetSmtpClient();
 
                 //Try & send the email with the SMTP settings
                 smtp.Send(email);
