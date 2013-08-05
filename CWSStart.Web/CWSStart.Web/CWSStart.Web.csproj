@@ -314,7 +314,6 @@
     <Content Include="config\404handlers.config" />
     <Content Include="bin\x86\Microsoft.VC90.CRT\Microsoft.VC90.CRT.manifest" />
     <Content Include="bin\amd64\Microsoft.VC90.CRT\Microsoft.VC90.CRT.manifest" />
-    <Content Include="Views\CWS-ContactForm.cshtml" />
     <Content Include="Views\CWS-Galleries.cshtml" />
     <Content Include="Views\CWS-Gallery.cshtml" />
     <Content Include="Views\CWS-Home.cshtml" />
