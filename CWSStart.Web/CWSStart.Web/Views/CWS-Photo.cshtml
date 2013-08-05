@@ -14,3 +14,33 @@
         </a>
     </em>
 </h4>
+
+
+<ul class="pager">
+    @if (Model.Content.Previous() != null)
+    {
+        <li class="previous">
+            <a href="@Model.Content.Previous().Url">&larr; Previous</a>
+        </li>
+    }
+    else
+    {
+        <li class="previous disabled">
+            <a href="#">&larr; Previous</a>
+        </li>
+    }
+    
+    
+    @if (Model.Content.Next() != null)
+    {
+        <li class="next">
+            <a href="@Model.Content.Next().Url">Next &rarr;</a>
+        </li>
+    }
+    else
+    {
+        <li class="next disabled">
+            <a href="#">Next &rarr;</a>
+        </li>
+    }
+</ul>
