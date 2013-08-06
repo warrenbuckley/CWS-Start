@@ -117,6 +117,9 @@ namespace CWSStart.Web.Controllers
             //Get Current Member
             var member = Member.GetCurrentMember();
 
+            //Get all members where profileURL property = value from Model
+            Member checkProfileURL = Member.GetAllAsList().FirstOrDefault(x => x.getProperty("profileURL").Value.ToString() == profileURL);
+
             //Sometimes inconsistent results with GetCurrent Member, unsure why?!
             if (member != null)
             {
@@ -125,9 +128,6 @@ namespace CWSStart.Web.Controllers
                     //profile URL is the same as one currently stored - so it's ok to use & rule valid (return true, back to validator)
                     return Json(true, JsonRequestBehavior.AllowGet);
                 }
-
-                //Get all members where profileURL property = value from Model
-                Member checkProfileURL = Member.GetAllAsList().FirstOrDefault(x => x.getProperty("profileURL").Value.ToString() == profileURL);
 
                 //Check not null if not null then its got one in the system already
                 if (checkProfileURL != null)
@@ -139,6 +139,14 @@ namespace CWSStart.Web.Controllers
                 // no profile has this url so its all good in the hood
                 return Json(true, JsonRequestBehavior.AllowGet);
             }
+
+            //No Current Member - most likely from register form then
+            //Check not null if not null then its got one in the system already
+            if (checkProfileURL != null)
+            {
+                return Json(String.Format("The profile URL '{0}' is already in use.", profileURL), JsonRequestBehavior.AllowGet);
+            }
+
 
             //Unable to get current member to check (just an OK for client side validation)
             //and let action in controller validate

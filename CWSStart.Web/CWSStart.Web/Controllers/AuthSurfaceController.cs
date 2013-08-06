@@ -196,8 +196,8 @@ namespace CWSStart.Web.Controllers
                 //Set the verified email to false
                 createMember.getProperty("hasVerifiedEmail").Value = false;
 
-                //Set the profile URL to be the member ID, so they have a unqie profile ID, until they go to set it
-                createMember.getProperty("profileURL").Value = createMember.Id;
+                //Set the profile URL
+                createMember.getProperty("profileURL").Value = model.ProfileURL;
 
                 //Set member group
                 var memberGroup = MemberGroup.GetByName("CWS-Members");

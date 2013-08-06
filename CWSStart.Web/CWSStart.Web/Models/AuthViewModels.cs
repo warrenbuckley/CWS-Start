@@ -50,6 +50,11 @@ namespace CWSStart.Web.Models
         [Required(ErrorMessage = "Please enter your password")]
         [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "Your passwords do not match")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [Remote("CheckProfileURLAvailable", "ProfileSurface", ErrorMessage = "The profile URL is already in use")]
+        [DisplayName("Profile URL")]
+        public string ProfileURL { get; set; }
     }
 
     //Forgotten Password View Model

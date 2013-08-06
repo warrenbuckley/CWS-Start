@@ -47,9 +47,12 @@ namespace CWSStart.Web.Controllers
 
                     //Increment counter by one
                     findMember.getProperty("numberOfProfileViews").Value = noOfProfileViews + 1;
-
+                    
                     //Save it down to the member
                     findMember.Save();
+
+                    int noOfLogins = 0;
+                    int.TryParse(findMember.getProperty("numberOfLogins").Value.ToString(), out noOfLogins);
 
                     //Got the member lets bind the data to the view model
                     profile.Name                    = findMember.Text;
@@ -62,9 +65,9 @@ namespace CWSStart.Web.Controllers
                     profile.Skype                   = findMember.getProperty("skype").Value.ToString();
                     profile.Twitter                 = findMember.getProperty("twitter").Value.ToString();
 
-                    profile.NumberOfLogins          = Convert.ToInt32(findMember.getProperty("numberOfLogins").Value.ToString());
+                    profile.NumberOfLogins          = noOfLogins;
                     profile.LastLoginDate           = DateTime.ParseExact(findMember.getProperty("lastLoggedIn").Value.ToString(), "dd/MM/yyyy @ HH:mm:ss", null);
-                    profile.NumberOfProfileViews    = Convert.ToInt32(findMember.getProperty("numberOfProfileViews").Value.ToString());
+                    profile.NumberOfProfileViews    = noOfProfileViews;
 
                 }
                 else

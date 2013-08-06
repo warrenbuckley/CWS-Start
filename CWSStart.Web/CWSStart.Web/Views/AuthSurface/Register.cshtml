@@ -48,6 +48,12 @@ else
                 @Html.ValidationMessageFor(model => model.ConfirmPassword, string.Empty, new { @class= "help-block" })
             </div>
             
+            <div class="form-group">
+                @Html.LabelFor(model => model.ProfileURL, new { @class = "control-label"})
+                @Html.TextBoxFor(model => model.ProfileURL, new{ @class = "form-control", placeholder = "warrenbuckley" })
+                @Html.ValidationMessageFor(model => model.ProfileURL, string.Empty, new { @class= "help-block" })
+            </div>
+            
             <button type="submit" class="btn btn-default">Register</button>
         
         </fieldset>
