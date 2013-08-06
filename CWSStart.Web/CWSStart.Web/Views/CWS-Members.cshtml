@@ -1,0 +1,25 @@
+﻿@using umbraco.cms.businesslogic.member
+@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    Layout = "CWS-Master.cshtml";
+
+    //Get all members
+    var allMembers = Member.GetAll;
+    
+}
+
+<h2>Members</h2>
+@if (allMembers.Any())
+{
+    <ul>
+        @foreach (var member in allMembers)
+        {
+            var profileURL  = member.getProperty("profileURL").Value.ToString();
+            profileURL      = string.Format("/user/{0}", profileURL);
+    
+            <li>
+                <a href="@profileURL">@member.Text</a>
+            </li>
+        }
+    </ul>
+}

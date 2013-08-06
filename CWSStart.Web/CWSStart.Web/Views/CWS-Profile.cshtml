@@ -1,7 +1,32 @@
-﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+﻿@using CWSStart.Web.CWSExtensions
+@using umbraco.cms.businesslogic.member
+@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
 @{
     Layout = "CWS-Master.cshtml";
+    
+    //Get Current Member
+    var currentMember = Member.GetCurrentMember();
+    
 }
 
 <h2>Profile</h2>
-<h3>TODO: Add here - a view to see your own profile</h3>
+<h2>@currentMember.Text</h2>
+
+<div class="row">
+    <div class="col-9">
+        <h3>Email: @currentMember.Email</h3>
+        <h3>Description:  @currentMember.getProperty("description").Value.ToString()</h3>
+
+        <h3>LinkedIn: @currentMember.getProperty("linkedIn").Value.ToString()</h3>
+        <h3>Skype: @currentMember.getProperty("skype").Value.ToString()</h3>
+        <h3>Twitter: @currentMember.getProperty("twitter").Value.ToString()</h3>
+
+        <h3>Member ID: @currentMember.Id</h3>
+        <h3>No Of Logins: @currentMember.getProperty("numberOfLogins").Value</h3>
+        <h3>No of profile views: @currentMember.getProperty("numberOfProfileViews").Value</h3>
+        <h3>Last Login Date: @DateTime.ParseExact(currentMember.getProperty("lastLoggedIn").Value.ToString(), "dd/MM/yyyy @ HH:mm:ss", null)</h3>
+    </div>
+    <div class="col-3">
+        <img src="@(currentMember.Email.GetGravatarUrl(250, string.Empty))" alt="@currentMember.Text" class="img-circle"/>
+    </div>
+</div>

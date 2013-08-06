@@ -262,6 +262,7 @@
     <Content Include="umbraco\Images\Umbraco\CWS-user--plus.png" />
     <Content Include="umbraco\Images\Umbraco\CWS-sitemap-image.png" />
     <Content Include="umbraco\Images\Umbraco\CWS-magnifier.png" />
+    <Content Include="umbraco\Images\Umbraco\CWS-exclamation-red.png" />
     <Content Include="usercontrols\Dashboard\ViewContactLogs.ascx" />
     <Content Include="usercontrols\dummy.txt" />
     <Content Include="Web.config" />
