@@ -62,7 +62,7 @@ namespace CWSStart.Web.CWSExtensions
             //Create our custom MVC route for our member profile pages
             RouteTable.Routes.MapRoute(
                 "memberProfileRoute",
-                "profile/{profileURLtoCheck}",
+                "user/{profileURLtoCheck}",
                 new
                 {
                     controller  = "ViewProfile",

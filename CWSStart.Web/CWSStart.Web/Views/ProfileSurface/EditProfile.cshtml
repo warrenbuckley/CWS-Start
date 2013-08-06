@@ -42,8 +42,11 @@
         </div>
         
         <div class="form-group">
-            @Html.LabelFor(model => model.ProfileURL, new { @class = "control-label"}) (http://site.co.uk/profile/joebloggs)
-            @Html.TextBoxFor(model => model.ProfileURL, new {@class = "form-control", placeholder = "joebloggs"})
+            @Html.LabelFor(model => model.ProfileURL, new { @class = "control-label"})
+            <div class="input-group">
+                <span class="input-group-addon">http://site.co.uk/user/</span>
+                @Html.TextBoxFor(model => model.ProfileURL, new {@class = "form-control", placeholder = "joebloggs"})
+            </div>
             @Html.ValidationMessageFor(model => model.ProfileURL, string.Empty, new { @class= "help-block" })
         </div>
         
