@@ -73,7 +73,7 @@ namespace CWSStart.Web.CWSExtensions
         protected void AddCustomMemberGroup()
         {
             //Admin user
-            var adminUser = new User("admin");
+            var adminUser = new User(0);
 
             //Let's add our Member Group
             var customMemberGroup = MemberGroup.MakeNew("CWS-Members", adminUser);
@@ -86,7 +86,7 @@ namespace CWSStart.Web.CWSExtensions
         protected void AddCustomMemberType()
         {
             //Admin user
-            var adminUser = new User("admin");
+            var adminUser = new User(0);
 
             //So let's add it...
             var customMemberType    = MemberType.MakeNew(adminUser, "CWS-Member");
