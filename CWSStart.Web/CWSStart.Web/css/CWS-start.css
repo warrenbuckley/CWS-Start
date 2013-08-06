@@ -9,3 +9,13 @@
 #footer .text-muted {
     margin: 10px 0;
 }
+
+@media (min-width: 768px) {
+    #wrap > .container {
+        padding-top: 110px !important;
+    }
+
+    .navbar .navbar-form {
+        float: none;
+    }
+}
