@@ -113,8 +113,12 @@ namespace CWSStart.Web.Controllers
                             //Get the verify guid on the member (so we can resend out verification email)
                             var verifyGUID = checkMember.getProperty("emailVerifyGUID").Value.ToString();
 
+                            //Get Email Settings from Login Node (current node)
+                            var emailFrom       = CurrentPage.GetPropertyValue("emailFrom", "robot@your-site.co.uk").ToString();
+                            var emailSubject    = CurrentPage.GetPropertyValue("emailSubject", "CWS - Verify Email").ToString();
+
                             //Send out verification email, with GUID in it
-                            EmailHelper.SendVerifyEmail(checkMember.Email, "robot@your-site.co.uk", "CWS - Verify Email", verifyGUID);
+                            EmailHelper.SendVerifyEmail(checkMember.Email, emailFrom, emailSubject, verifyGUID);
 
                             return CurrentUmbracoPage();
                         }
@@ -234,8 +238,13 @@ namespace CWSStart.Web.Controllers
                 updateMember.Save();
             }
 
+            //Get Email Settings from Register Node (current node)
+            var emailFrom       = CurrentPage.GetPropertyValue("emailFrom", "robot@your-site.co.uk").ToString();
+            var emailSubject    = CurrentPage.GetPropertyValue("emailSubject", "CWS - Verify Email").ToString();
+
+
             //Send out verification email, with GUID in it
-            EmailHelper.SendVerifyEmail(model.EmailAddress, "robot@your-site.co.uk", "CWS - Verify Email", tempGUID.ToString());
+            EmailHelper.SendVerifyEmail(model.EmailAddress, emailFrom, emailSubject, tempGUID.ToString());
 
             //Update success flag (in a TempData key)
             TempData["IsSuccessful"] = true;
@@ -281,8 +290,12 @@ namespace CWSStart.Web.Controllers
                 //Save the member with the up[dated property value
                 findMember.Save();
 
+                //Get Email Settings from Forgotten Password Node (current node)
+                var emailFrom       = CurrentPage.GetPropertyValue("emailFrom", "robot@your-site.co.uk").ToString();
+                var emailSubject    = CurrentPage.GetPropertyValue("emailSubject", "CWS - Forgotten Password").ToString();
+
                 //Send user an email to reset password with GUID in it
-                EmailHelper.SendResetPasswordEmail(findMember.Email, "robot@your-site.co.uk", "CWS - Forgotten Password",  expiryTime.ToString("ddMMyyyyHHmmssFFFF"));
+                EmailHelper.SendResetPasswordEmail(findMember.Email, emailFrom, emailSubject,  expiryTime.ToString("ddMMyyyyHHmmssFFFF"));
             }
             else
             {

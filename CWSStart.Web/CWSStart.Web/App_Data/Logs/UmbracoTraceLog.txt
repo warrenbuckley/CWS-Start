@@ -125,3 +125,12 @@ System.FormatException: Input string was not in a correct format.
    at System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)
    at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
    at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2013-08-06 14:08:50,802 [22] INFO  Umbraco.Core.PluginManager - [Thread 5] Starting resolution types of umbraco.BusinessLogic.Actions.IActionHandler
+2013-08-06 14:08:50,810 [22] INFO  Umbraco.Core.PluginManager - [Thread 5] Completed resolution of types of umbraco.BusinessLogic.Actions.IActionHandler, found 1 (took 7ms)
+2013-08-06 14:19:33,862 [22] INFO  umbraco.content - [Thread 5] Loading content from database...
+2013-08-06 14:20:08,942 [22] INFO  Umbraco.Core.Publishing.PublishingStrategy - [Thread 34] Content 'Forgotten Password' with Id '1090' has been published.
+2013-08-06 14:20:08,943 [22] INFO  Umbraco.Core.Publishing.PublishingStrategy - [Thread 34] Content 'Verify Email' with Id '1075' has been published.
+2013-08-06 14:20:08,943 [22] INFO  Umbraco.Core.Publishing.PublishingStrategy - [Thread 34] Content 'Reset Password' with Id '1074' has been published.
+2013-08-06 14:20:08,943 [22] INFO  Umbraco.Core.Publishing.PublishingStrategy - [Thread 34] Content 'Search' with Id '1098' has been published.
+2013-08-06 14:20:08,943 [22] INFO  Umbraco.Core.Publishing.PublishingStrategy - [Thread 34] Content 'XML Sitemap' with Id '1094' has been published.
+2013-08-06 14:20:08,943 [22] INFO  Umbraco.Core.Publishing.PublishingStrategy - [Thread 34] Content 'Profile' with Id '1080' has been published.
