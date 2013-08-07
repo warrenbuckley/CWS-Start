@@ -12,6 +12,7 @@ using umbraco.cms.businesslogic.web;
 using Umbraco.Core;
 using Umbraco.Core.Models;
 using Umbraco.Core.Persistence;
+using Umbraco.Web.Routing;
 
 namespace CWSStart.Web.CWSExtensions
 {
@@ -122,6 +123,13 @@ namespace CWSStart.Web.CWSExtensions
             //Save the changes
             customMemberType.Save();
         }
-        
+
+
+        protected override void ApplicationStarting(UmbracoApplicationBase umbracoApplication, ApplicationContext applicationContext)
+        {
+            //On application starting event...
+            //Add to the ContentFinder resolver collection our custom 404 Content Finder resolver
+            ContentLastChanceFinderResolver.Current.SetFinder(new _404iLastChanceFinder());
+        }
     }
 }

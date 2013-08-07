@@ -274,6 +274,7 @@
     <Compile Include="Controllers\ProfileSurfaceController.cs" />
     <Compile Include="Controllers\SiteChromeSurfaceController.cs" />
     <Compile Include="Controllers\ViewProfileController.cs" />
+    <Compile Include="CWSExtensions\404iLastChanceFinder.cs" />
     <Compile Include="CWSExtensions\EmailHelper.cs" />
     <Compile Include="CWSExtensions\ExtensionMethods.cs" />
     <Compile Include="CWSExtensions\RegisterStartupEvents.cs" />
@@ -343,6 +344,11 @@
     <Content Include="Views\CWS-Two-Column.cshtml" />
     <Content Include="Views\Partials\SubNavi.cshtml" />
     <Content Include="Views\CWS-Photo.cshtml" />
+    <Content Include="Views\CWS-404.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\CWS-Members.cshtml" />
+    <Content Include="Views\CWS-Profile.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
