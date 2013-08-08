@@ -18,5 +18,6 @@
 CWSStart.Web/CWSStart.Web/App_Data/TEMP/ClientDependency/*
 CWSStart.Web/CWSStart.Web/App_Data/TEMP/ExamineIndexes/*
 CWSStart.Web/CWSStart.Web/App_Data/TEMP/PluginCache/*
+CWSStart.Web/CWSStart.Web/bin/*
 CWSStart.Web/CWSStart.Web/obj/*
 CWSStart.Web/packages/*
