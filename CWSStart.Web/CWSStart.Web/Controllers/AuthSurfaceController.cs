@@ -11,6 +11,7 @@ using umbraco.cms.businesslogic.member;
 using Umbraco.Web;
 using Umbraco.Web.Mvc;
 using CWSStart.Web.Models;
+using System.Net.Sockets;
 
 namespace CWSStart.Web.Controllers
 {
@@ -90,7 +91,7 @@ namespace CWSStart.Web.Controllers
 
                             //Update label with last logged in IP address & Host Name
                             string hostName         = Dns.GetHostName();
-                            string clientIPAddress  = Dns.GetHostAddresses(hostName).GetValue(0).ToString();
+                            string clientIPAddress = Dns.GetHostAddresses(hostName).Where(x => x.AddressFamily == AddressFamily.InterNetwork).FirstOrDefault().ToString(); 
 
                             checkMember.getProperty("hostNameOfLastLogin").Value    = hostName;
                             checkMember.getProperty("IPofLastLogin").Value          = clientIPAddress;
