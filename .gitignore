@@ -21,3 +21,5 @@ CWSStart.Web/CWSStart.Web/App_Data/TEMP/PluginCache/*
 CWSStart.Web/CWSStart.Web/bin/*
 CWSStart.Web/CWSStart.Web/obj/*
 CWSStart.Web/packages/*
+CWSStart.Web/CWSStart.Web.v11.suo
+CWSStart.Web/CWSStart.Web/CWSStart.Web.csproj.user

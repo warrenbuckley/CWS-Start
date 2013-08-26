@@ -11,7 +11,7 @@
     <div class="row">
         @foreach (var photo in group)
         {
-            <div class="col-lg-3">
+            <div class="col-md-3">
                 <a href="@photo.Url" class="thumbnail">
                     <img src="@photo.GetProperty("photo").Value" alt="@photo.Name" />
                 </a>
