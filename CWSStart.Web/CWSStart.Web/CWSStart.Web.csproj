@@ -226,19 +226,19 @@
     <Content Include="bin\x86\sqlceme40.dll" />
     <Content Include="bin\x86\sqlceqp40.dll" />
     <Content Include="bin\x86\sqlcese40.dll" />
-    <Content Include="css\bootstrap.css" />
     <Content Include="css\bootstrap.min.css" />
     <Content Include="css\CWS-log-viewer.css" />
     <Content Include="css\CWS-start.css" />
+    <Content Include="css\font-awesome.min.css" />
     <Content Include="css\sticky-footer.css" />
     <Content Include="css\dummy.txt" />
     <Content Include="default.aspx" />
+    <Content Include="font\fontawesome-webfont.svg" />
     <Content Include="macroScripts\dummy.txt" />
     <Content Include="masterpages\dummy.txt" />
     <Content Include="media\1001\venue.jpg" />
     <Content Include="media\1001\venue_thumb.jpg" />
     <Content Include="media\dummy.txt" />
-    <Content Include="scripts\bootstrap.js" />
     <Content Include="scripts\bootstrap.min.js" />
     <Content Include="scripts\dummy.txt" />
     <Content Include="scripts\jquery-1.10.2.min.js" />
@@ -349,6 +349,10 @@
     </Content>
     <Content Include="Views\CWS-Members.cshtml" />
     <Content Include="Views\CWS-Profile.cshtml" />
+    <Content Include="font\fontawesome-webfont.eot" />
+    <Content Include="font\fontawesome-webfont.ttf" />
+    <Content Include="font\fontawesome-webfont.woff" />
+    <Content Include="font\FontAwesome.otf" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
