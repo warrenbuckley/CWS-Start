@@ -66,7 +66,7 @@ namespace CWSStart.Web.Controllers
                     profile.Twitter                 = findMember.getProperty("twitter").Value.ToString();
 
                     profile.NumberOfLogins          = noOfLogins;
-                    profile.LastLoginDate           = DateTime.ParseExact(findMember.getProperty("lastLoggedIn").Value.ToString(), "dd/MM/yyyy @ HH:mm:ss", null);
+                    profile.LastLoginDate           = DateTime.ParseExact(findMember.getProperty("lastLoggedIn").Value.ToString(), "dd/MM/yyyy @ HH:mm:ss", CultureInfo.InvariantCulture);
                     profile.NumberOfProfileViews    = noOfProfileViews;
 
                 }
