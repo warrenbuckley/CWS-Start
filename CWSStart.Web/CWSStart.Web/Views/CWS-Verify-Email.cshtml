@@ -1,7 +1,8 @@
-﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+﻿@using CWSStart.Web.CWSExtensions
+@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
 @{
     Layout = "CWS-Master.cshtml";
 }
 
-<h2>Verify Email</h2>
+<h2>@DictionaryHelper.GetDictItem("VerifyEmail","Verify Email")</h2>
 @Html.Action("RenderVerifyEmail", "AuthSurface")

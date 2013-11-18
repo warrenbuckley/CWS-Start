@@ -109,7 +109,7 @@ namespace CWSStart.Web.Controllers
                         else
                         {
                             //User has not verified their email yet
-                            ModelState.AddModelError("LoginForm.", "Email account has not been verified. A verification email has been resent to you.");
+                            ModelState.AddModelError("LoginForm.", DictionaryHelper.GetDictItem("EmailAccountNotVerified", "Email account has not been verified. A verification email has been resent to you."));
 
                             //Get the verify guid on the member (so we can resend out verification email)
                             var verifyGUID = checkMember.getProperty("emailVerifyGUID").Value.ToString();
@@ -185,7 +185,7 @@ namespace CWSStart.Web.Controllers
             }
 
             //Member Type
-            MemberType cwsMemberType = MemberType.GetByAlias("CWS-Member");
+            MemberType cwsMemberType = MemberType.GetByAlias(ConfigHelper.GetCWSMemberTypeAlias());
 
             //Umbraco Admin User (The Umbraco back office username who will create the member via the API)
             User adminUser = new User("Admin");
@@ -205,7 +205,7 @@ namespace CWSStart.Web.Controllers
                 createMember.getProperty("profileURL").Value = model.ProfileURL;
 
                 //Set member group
-                var memberGroup = MemberGroup.GetByName("CWS-Members");
+                var memberGroup = MemberGroup.GetByName(ConfigHelper.GetCWSMemberGroupName());
                 createMember.AddGroup(memberGroup.Id);
 
                 //Save the changes
@@ -402,7 +402,7 @@ namespace CWSStart.Web.Controllers
         public ActionResult RenderVerifyEmail(string verifyGUID)
         {
             //Homepage node
-            var home = CurrentPage.AncestorOrSelf("CWS-Home");
+            var home = CurrentPage.AncestorOrSelf(ConfigHelper.GetCWSHomeDocTypeAlias());
 
             //Auto binds and gets guid from the querystring
             Member findMember = Member.GetAllAsList().SingleOrDefault(x => x.getProperty("emailVerifyGUID").Value.ToString() == verifyGUID);

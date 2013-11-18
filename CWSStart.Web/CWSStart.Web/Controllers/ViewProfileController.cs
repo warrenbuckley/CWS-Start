@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using CWSStart.Web.CWSExtensions;
 using CWSStart.Web.Models;
 using umbraco.cms.businesslogic.member;
 using Umbraco.Core.Models;
@@ -73,13 +74,13 @@ namespace CWSStart.Web.Controllers
                 else
                 {
                     //Couldn't find the member return a 404
-                    return new HttpNotFoundResult("The member profile does not exist");
+                    return new HttpNotFoundResult(DictionaryHelper.GetDictItem("MemberProfileDoesNotExist", "The member profile does not exist"));
                 }
             }
             else
             {
                 //Couldn't find the member return a 404
-                return new HttpNotFoundResult("No profile URL parameter was provided");
+                return new HttpNotFoundResult(DictionaryHelper.GetDictItem("NoProfileURLParameter","No profile URL parameter was provided"));
             }
 
             

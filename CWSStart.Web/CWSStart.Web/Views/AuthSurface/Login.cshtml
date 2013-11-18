@@ -3,6 +3,7 @@
 @using Umbraco.Web
 @using CWSStart.Web.Controllers
 @using CWSStart.Web.Models
+@using CWSStart.Web.CWSExtensions;
 @model LoginViewModel
 
 @{
@@ -13,9 +14,9 @@
 @if (!ViewData.ModelState.IsValid)
 {
     <div class="alert alert-danger">
-        <h4>Forgotten your password?</h4>
+        <h4>@DictionaryHelper.GetDictItem("ForgottenPassword","Forgotten your password?")</h4>
         <p>
-            Don't worry we all forget our passwords from time to time and <a href="/forgotten-password" class="alert-link">may need a reminder</a>.
+            @Html.Raw(DictionaryHelper.GetDictItem("ForgottenPasswordDescription","Don't worry we all forget our passwords from time to time and <a href='/forgotten-password' class='alert-link'>may need a reminder</a>."))
         </p>
     
         @foreach (ModelState modelState in ViewData.ModelState.Values)
@@ -43,19 +44,19 @@
     <fieldset>
         <div class="form-group">
             @Html.LabelFor(model => model.EmailAddress, new { @class = "control-label"})
-            @Html.TextBoxFor(model => model.EmailAddress, new{ @class = "form-control", placeholder = "Email Address" })
+            @Html.TextBoxFor(model => model.EmailAddress, new{ @class = "form-control", placeholder = DictionaryHelper.GetDictItem("PlaceHolderEmailAddress","Email Address") })
             @Html.ValidationMessageFor(model => model.EmailAddress, string.Empty, new { @class= "help-block" })
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.Password, new { @class = "control-label"})
-            @Html.PasswordFor(model => model.Password, new{ @class = "form-control", placeholder = "Password" })
+            @Html.PasswordFor(model => model.Password, new{ @class = "form-control", placeholder = DictionaryHelper.GetDictItem("PlaceHolderPassword","Password") })
             @Html.ValidationMessageFor(model => model.Password, string.Empty, new { @class= "help-block" })
         </div>
         
         @Html.HiddenFor(Model => Model.ReturnUrl)
         
-        <button type="submit" class="btn btn-default">Login</button>
+        <button type="submit" class="btn btn-default">@DictionaryHelper.GetDictItem("ButtonLogin","Login")</button>
 
     </fieldset>
 }
