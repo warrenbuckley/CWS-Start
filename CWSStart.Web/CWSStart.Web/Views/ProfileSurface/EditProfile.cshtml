@@ -25,19 +25,19 @@
 
     <fieldset>
         <div class="form-group">
-            @Html.LabelFor(model => model.Name, new { @class = "control-label"})
+            @Html.LabelFor(model => model.Name,DictionaryHelper.GetDictItem("LabelName","Name"), new { @class = "control-label"})
             @Html.TextBoxFor(model => model.Name, new {@class = "form-control", placeholder = DictionaryHelper.GetDictItem("PlaceHolderYourName","Your Name")})
             @Html.ValidationMessageFor(model => model.Name, string.Empty, new { @class= "help-block" })
         </div>
         
         <div class="form-group">
-            @Html.LabelFor(model => model.EmailAddress, new { @class = "control-label"})
+            @Html.LabelFor(model => model.EmailAddress, DictionaryHelper.GetDictItem("LabelEmail","Email"), new { @class = "control-label"})
             @Html.TextBoxFor(model => model.EmailAddress, new {@class = "form-control", placeholder = DictionaryHelper.GetDictItem("PlaceHolderEmailAddress","Email Address")})
             @Html.ValidationMessageFor(model => model.EmailAddress, string.Empty, new { @class= "help-block" })
         </div>
         
         <div class="form-group">
-            @Html.LabelFor(model => model.Description, new { @class = "control-label"})
+            @Html.LabelFor(model => model.Description, DictionaryHelper.GetDictItem("LabelDescription","Description"), new { @class = "control-label"})
             @Html.TextAreaFor(model => model.Description, new {@class = "form-control", placeholder = DictionaryHelper.GetDictItem("PlaceHolderDescription","Description")})
             @Html.ValidationMessageFor(model => model.Description, string.Empty, new { @class= "help-block" })
         </div>
@@ -52,19 +52,19 @@
         </div>
         
         <div class="form-group">
-            @Html.LabelFor(model => model.Twitter, new { @class = "control-label"})
+            @Html.LabelFor(model => model.Twitter, DictionaryHelper.GetDictItem("LabelTwitter","Twitter"), new { @class = "control-label"})
             @Html.TextBoxFor(model => model.Twitter, new {@class = "form-control", placeholder = "@Umbraco"})
             @Html.ValidationMessageFor(model => model.Twitter, string.Empty, new { @class= "help-block" })
         </div>
         
         <div class="form-group">
-            @Html.LabelFor(model => model.LinkedIn, new { @class = "control-label"})
+            @Html.LabelFor(model => model.LinkedIn, DictionaryHelper.GetDictItem("LabelLinkedIn","LinkedIn"),  new { @class = "control-label"})
             @Html.TextBoxFor(model => model.LinkedIn, new {@class = "form-control", placeholder = "LinkedIn URL"})
             @Html.ValidationMessageFor(model => model.LinkedIn, string.Empty, new { @class= "help-block" })
         </div>
         
         <div class="form-group">
-            @Html.LabelFor(model => model.Skype, new { @class = "control-label"})
+            @Html.LabelFor(model => model.Skype, DictionaryHelper.GetDictItem("LabelSkype","Skype"), new { @class = "control-label"})
             @Html.TextBoxFor(model => model.Skype, new {@class = "form-control", placeholder = DictionaryHelper.GetDictItem("SkypeUserName","Skype Username")})
             @Html.ValidationMessageFor(model => model.Skype, string.Empty, new { @class= "help-block" })
         </div>

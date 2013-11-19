@@ -43,13 +43,13 @@
 
     <fieldset>
         <div class="form-group">
-            @Html.LabelFor(model => model.EmailAddress, new { @class = "control-label"})
+            @Html.LabelFor(model => model.EmailAddress, DictionaryHelper.GetDictItem("LabelEmailAddress","Email address"), new { @class = "control-label"})
             @Html.TextBoxFor(model => model.EmailAddress, new{ @class = "form-control", placeholder = DictionaryHelper.GetDictItem("PlaceHolderEmailAddress","Email Address") })
             @Html.ValidationMessageFor(model => model.EmailAddress, string.Empty, new { @class= "help-block" })
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Password, new { @class = "control-label"})
+            @Html.LabelFor(model => model.Password, DictionaryHelper.GetDictItem("LabelPassword","Password"), new { @class = "control-label"})
             @Html.PasswordFor(model => model.Password, new{ @class = "form-control", placeholder = DictionaryHelper.GetDictItem("PlaceHolderPassword","Password") })
             @Html.ValidationMessageFor(model => model.Password, string.Empty, new { @class= "help-block" })
         </div>
