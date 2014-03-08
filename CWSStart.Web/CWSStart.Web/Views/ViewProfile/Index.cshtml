@@ -11,17 +11,17 @@
 
 <div class="row">
     <div class="col-9">
-        <h3>Email: @Model.EmailAddress</h3>
-        <h3>Description: @Model.Description</h3>
-
+        <h3>@DictionaryHelper.GetDictItem("LabelEmail","Email:") @Model.EmailAddress</h3>
+        <h3>@DictionaryHelper.GetDictItem("Description","Description:") @Model.Description</h3>
+        
         <h3>LinkedIn: @Model.LinkedIn</h3>
         <h3>Skype: @Model.Skype</h3>
         <h3>Twitter: @Model.Twitter</h3>
 
-        <h3>Member ID: @Model.MemberID</h3>
-        <h3>No Of Logins: @Model.NumberOfLogins</h3>
-        <h3>No of profile views: @Model.NumberOfProfileViews</h3>
-        <h3>Last Login Date: @Model.LastLoginDate</h3>
+        <h3>@DictionaryHelper.GetDictItem("LabelMemberID","Member ID:") @Model.MemberID</h3>
+        <h3>@DictionaryHelper.GetDictItem("LabelNumberOfLogins","No Of Logins:") @Model.NumberOfLogins</h3>
+        <h3>@DictionaryHelper.GetDictItem("LabelNumberOfProfileViews","No of profile views:") @Model.NumberOfProfileViews</h3>
+        <h3>@DictionaryHelper.GetDictItem("LabelLastLogin","Last Login Date:") @Model.LastLoginDate</h3>
     </div>
     <div class="col-3">
         <img src="@(Model.EmailAddress.GetGravatarUrl(250, string.Empty))" alt="@Model.Name" class="img-circle"/>

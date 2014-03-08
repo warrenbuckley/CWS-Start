@@ -1,4 +1,5 @@
-﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+﻿@using CWSStart.Web.CWSExtensions
+@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
 @{
     Layout = "CWS-Master.cshtml";
 }
@@ -20,13 +21,13 @@
     @if (Model.Content.Previous() != null)
     {
         <li class="previous">
-            <a href="@Model.Content.Previous().Url">&larr; Previous</a>
+            <a href="@Model.Content.Previous().Url">&larr; @DictionaryHelper.GetDictItem("Previous","Previous")</a>
         </li>
     }
     else
     {
         <li class="previous disabled">
-            <a href="#">&larr; Previous</a>
+            <a href="#">&larr; @DictionaryHelper.GetDictItem("Previous","Previous")</a>
         </li>
     }
     
@@ -34,13 +35,13 @@
     @if (Model.Content.Next() != null)
     {
         <li class="next">
-            <a href="@Model.Content.Next().Url">Next &rarr;</a>
+            <a href="@Model.Content.Next().Url">@DictionaryHelper.GetDictItem("Next","Next") &rarr;</a>
         </li>
     }
     else
     {
         <li class="next disabled">
-            <a href="#">Next &rarr;</a>
+            <a href="#">@DictionaryHelper.GetDictItem("Next","Next") &rarr;</a>
         </li>
     }
 </ul>

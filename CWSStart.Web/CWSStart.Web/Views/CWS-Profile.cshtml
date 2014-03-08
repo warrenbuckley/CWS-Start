@@ -5,7 +5,7 @@
     Layout = "CWS-Master.cshtml";
 }
 
-<h2>Profile</h2>
+<h2>@DictionaryHelper.GetDictItem("Profile","Profile")</h2>
 
 @{
     if (Umbraco.MemberIsLoggedOn())
@@ -18,17 +18,18 @@
 
         <div class="row">
             <div class="col-9">
-                <h3>Email: @currentMember.Email</h3>
-                <h3>Description:  @currentMember.getProperty("description").Value.ToString()</h3>
+
+                <h3>>@DictionaryHelper.GetDictItem("LabelEmail","Email:") @currentMember.Email</h3>
+                <h3>@DictionaryHelper.GetDictItem("Description","Description:")  @currentMember.getProperty("description").Value.ToString()</h3>
 
                 <h3>LinkedIn: @currentMember.getProperty("linkedIn").Value.ToString()</h3>
                 <h3>Skype: @currentMember.getProperty("skype").Value.ToString()</h3>
                 <h3>Twitter: @currentMember.getProperty("twitter").Value.ToString()</h3>
 
-                <h3>Member ID: @currentMember.Id</h3>
-                <h3>No Of Logins: @currentMember.getProperty("numberOfLogins").Value</h3>
-                <h3>No of profile views: @currentMember.getProperty("numberOfProfileViews").Value</h3>
-                <h3>Last Login Date: @DateTime.ParseExact(currentMember.getProperty("lastLoggedIn").Value.ToString(), "dd/MM/yyyy @ HH:mm:ss", null)</h3>
+                <h3>@DictionaryHelper.GetDictItem("LabelMemberID","Member ID:") @currentMember.Id</h3>
+                <h3>@DictionaryHelper.GetDictItem("LabelNumberOfLogins","No Of Logins:") @currentMember.getProperty("numberOfLogins").Value</h3>
+                <h3>@DictionaryHelper.GetDictItem("LabelNumberOfProfileViews","No of profile views:") @currentMember.getProperty("numberOfProfileViews").Value</h3>
+                <h3>@DictionaryHelper.GetDictItem("LabelLastLogin","Last Login Date:") @DateTime.ParseExact(currentMember.getProperty("lastLoggedIn").Value.ToString(), "dd/MM/yyyy @ HH:mm:ss", null)</h3>
             </div>
             <div class="col-3">
                 <img src="@(currentMember.Email.GetGravatarUrl(250, string.Empty))" alt="@currentMember.Text" class="img-circle"/>
@@ -37,7 +38,7 @@
     }
     else
     {
-        <h3>You are not logged in</h3>
+        <h3>@DictionaryHelper.GetDictItem("NotLoggedIn","You are not logged in")</h3>
     }
 }
 

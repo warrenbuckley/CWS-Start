@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using CWSStart.Web.CWSExtensions;
 using CWSStart.Web.Models;
 using umbraco.cms.businesslogic.member;
 using Umbraco.Web.Mvc;
@@ -100,7 +101,7 @@ namespace CWSStart.Web.Controllers
 
                 if (checkEmail != null)
                 {
-                    return Json(String.Format("The email address '{0}' is already in use.", emailAddress), JsonRequestBehavior.AllowGet);
+                    return Json(String.Format(DictionaryHelper.GetDictItem("EmailAddressInUse","The email address '{0}' is already in use."), emailAddress), JsonRequestBehavior.AllowGet);
                 }
 
                 return Json(true, JsonRequestBehavior.AllowGet);
@@ -132,7 +133,7 @@ namespace CWSStart.Web.Controllers
                 //Check not null if not null then its got one in the system already
                 if (checkProfileURL != null)
                 {
-                    return Json(String.Format("The profile URL '{0}' is already in use.", profileURL), JsonRequestBehavior.AllowGet);
+                    return Json(String.Format(DictionaryHelper.GetDictItem("ProfileURLInUse", "The profile URL '{0}' is already in use."), profileURL), JsonRequestBehavior.AllowGet);
                 }
 
 
@@ -144,7 +145,7 @@ namespace CWSStart.Web.Controllers
             //Check not null if not null then its got one in the system already
             if (checkProfileURL != null)
             {
-                return Json(String.Format("The profile URL '{0}' is already in use.", profileURL), JsonRequestBehavior.AllowGet);
+                return Json(String.Format(DictionaryHelper.GetDictItem("ProfileURLInUse","The profile URL '{0}' is already in use."), profileURL), JsonRequestBehavior.AllowGet);
             }
 
 

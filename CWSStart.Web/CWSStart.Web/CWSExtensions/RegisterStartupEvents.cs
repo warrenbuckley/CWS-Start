@@ -19,56 +19,77 @@ namespace CWSStart.Web.CWSExtensions
 
     public class RegisterStartupEvents : ApplicationEventHandler
     {
-        private const int LabelDataTypeID       = -92;
-        private const int TextStringDataTypeID  = -88;
-        private const int BooleanDataTypeID     = -49;
+        private const int LabelDataTypeID = -92;
+        private const int TextStringDataTypeID = -88;
+        private const int BooleanDataTypeID = -49;
+        private static object _lockObj = new object();
+        private static bool _ran = false;
 
         protected override void ApplicationStarted(UmbracoApplicationBase umbracoApplication, ApplicationContext applicationContext)
         {
             //Umbraco App has started
 
-            //Ensure our custom member type & it's properties are setup in Umbraco
-            //If not let's create it
-            MemberGroup checkMemberGroup = MemberGroup.GetByName("CWS-Members");
-
-            //Doesn't exist
-            if (checkMemberGroup == null)
+            // Taken from http://our.umbraco.org/wiki/reference/api-cheatsheet/using-iapplicationeventhandler-to-register-events
+            // Could prevent this issue https://github.com/warrenbuckley/CWS-Start/issues/18
+            // lock
+            if (!_ran)
             {
-                //Add custom member group to Umbraco install
-                AddCustomMemberGroup();
-            }
-
-            //Ensure our custom member type & it's properties are setup in Umbraco
-            //If not let's create it
-            MemberType checkMemberType = MemberType.GetByAlias("CWS-Member");
-
-            //Doesn't exist
-            if (checkMemberType == null)
-            {
-                //Add custom member type to Umbraco install
-                AddCustomMemberType();
-            }
-
-            //Get the Umbraco Database context
-            var db = applicationContext.DatabaseContext.Database;
-
-            //Check if the DB table does NOT exist
-            if (!db.TableExist("ContactFormLogs"))
-            {
-                //Create DB table - and set overwrite to false
-                db.CreateTable<ContactForm>(false);
-            }
-
-
-            //Create our custom MVC route for our member profile pages
-            RouteTable.Routes.MapRoute(
-                "memberProfileRoute",
-                "user/{profileURLtoCheck}",
-                new
+                lock (_lockObj)
                 {
-                    controller  = "ViewProfile",
-                    action      = "Index"
-                });        
+                    if (!_ran)
+                    {
+                        // everything we do here is blocking
+                        // on application start, so we should be 
+                        // quick. 
+                        // do you're registering here... or in a function 
+                        // you will need to add the relevent class at the top of your code (i.e using Umbraco.cms.businesslogic.web)
+                        //Ensure our custom member type & it's properties are setup in Umbraco
+                        //If not let's create it
+                        MemberGroup checkMemberGroup = MemberGroup.GetByName(ConfigHelper.GetCWSMemberGroupName());
+
+                        //Doesn't exist
+                        if (checkMemberGroup == null)
+                        {
+                            //Add custom member group to Umbraco install
+                            AddCustomMemberGroup();
+                        }
+
+                        //Ensure our custom member type & it's properties are setup in Umbraco
+                        //If not let's create it
+                        MemberType checkMemberType = MemberType.GetByAlias(ConfigHelper.GetCWSMemberTypeAlias());
+
+                        //Doesn't exist
+                        if (checkMemberType == null)
+                        {
+                            //Add custom member type to Umbraco install
+                            AddCustomMemberType();
+                        }
+
+                        //Get the Umbraco Database context
+                        var db = applicationContext.DatabaseContext.Database;
+
+                        //Check if the DB table does NOT exist
+                        if (!db.TableExist("ContactFormLogs"))
+                        {
+                            //Create DB table - and set overwrite to false
+                            db.CreateTable<ContactForm>(false);
+                        }
+
+
+
+                        //Create our custom MVC route for our member profile pages
+                        RouteTable.Routes.MapRoute(
+                            "memberProfileRoute",
+                            "user/{profileURLtoCheck}",
+                            new
+                            {
+                                controller = "ViewProfile",
+                                action = "Index"
+                            });
+                        _ran = true;
+                    }
+                }
+            }
         }
 
         protected void AddCustomMemberGroup()
@@ -77,8 +98,8 @@ namespace CWSStart.Web.CWSExtensions
             var adminUser = new User(0);
 
             //Let's add our Member Group
-            var customMemberGroup = MemberGroup.MakeNew("CWS-Members", adminUser);
-            
+            var customMemberGroup = MemberGroup.MakeNew(ConfigHelper.GetCWSMemberGroupName(), adminUser);
+
             //Save it
             customMemberGroup.Save();
         }
@@ -90,14 +111,14 @@ namespace CWSStart.Web.CWSExtensions
             var adminUser = new User(0);
 
             //So let's add it...
-            var customMemberType    = MemberType.MakeNew(adminUser, "CWS-Member");
-            customMemberType.Text   = "[CWS] Member";
-            customMemberType.Alias  = "CWS-Member";
+            var customMemberType = MemberType.MakeNew(adminUser, ConfigHelper.GetCWSMemberTypeAlias());
+            customMemberType.Text = ConfigHelper.GetCWSMemberTypeName();
+            customMemberType.Alias = ConfigHelper.GetCWSMemberTypeAlias();
 
             //Our DataType's (Have to be verbose with namespace, due to conflict with Umbraco.Core.Models)
-            var labelDataType       = new umbraco.cms.businesslogic.datatype.DataTypeDefinition(LabelDataTypeID);
-            var textstringDataType  = new umbraco.cms.businesslogic.datatype.DataTypeDefinition(TextStringDataTypeID);
-            var boolDataType        = new umbraco.cms.businesslogic.datatype.DataTypeDefinition(BooleanDataTypeID);
+            var labelDataType = new umbraco.cms.businesslogic.datatype.DataTypeDefinition(LabelDataTypeID);
+            var textstringDataType = new umbraco.cms.businesslogic.datatype.DataTypeDefinition(TextStringDataTypeID);
+            var boolDataType = new umbraco.cms.businesslogic.datatype.DataTypeDefinition(BooleanDataTypeID);
 
             //Add the custom properties to our member type
             //Labels
@@ -105,7 +126,7 @@ namespace CWSStart.Web.CWSExtensions
             customMemberType.AddPropertyType(labelDataType, "emailVerifyGUID", "Email Verify GUID");
             customMemberType.AddPropertyType(labelDataType, "numberOfLogins", "Number of Logins");
             customMemberType.AddPropertyType(labelDataType, "lastLoggedIn", "Last logged in");
-            customMemberType.AddPropertyType(labelDataType, "numberOfProfileViews", "Number of Profile views");            
+            customMemberType.AddPropertyType(labelDataType, "numberOfProfileViews", "Number of Profile views");
             customMemberType.AddPropertyType(labelDataType, "hostNameOfLastLogin", "Hostname of last login");
             customMemberType.AddPropertyType(labelDataType, "IPofLastLogin", "IP of last login");
             customMemberType.AddPropertyType(labelDataType, "profileURL", "Profile URL");
@@ -119,7 +140,7 @@ namespace CWSStart.Web.CWSExtensions
             customMemberType.AddPropertyType(textstringDataType, "twitter", "Twitter");
             customMemberType.AddPropertyType(textstringDataType, "linkedIn", "LinkedIn");
             customMemberType.AddPropertyType(textstringDataType, "skype", "Skype");
-            
+
             //Save the changes
             customMemberType.Save();
         }

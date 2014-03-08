@@ -1,8 +1,9 @@
-﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<IEnumerable<IPublishedContent>>
+﻿@using CWSStart.Web.CWSExtensions
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<IEnumerable<IPublishedContent>>
 
 @{
     var pages           = Model;
-    var currentPageID   = UmbracoContext.Current.PageId ?? Umbraco.TypedContentAtRoot().Single(x => x.DocumentTypeAlias == "CWS-Home").Id;
+    var currentPageID = UmbracoContext.Current.PageId ?? Umbraco.TypedContentAtRoot().Single(x => x.DocumentTypeAlias == ConfigHelper.GetCWSHomeDocTypeAlias()).Id;
     var currentPage     = Umbraco.TypedContent(currentPageID);
 }
 
@@ -46,7 +47,7 @@
             
             <form class="navbar-form form-inline pull-right" action="/search" method="POST">
                 <input type="text" class="form-control" name="q" placeholder="Search" />
-                <button type="submit" class="btn btn-default">Search</button>
+                <button type="submit" class="btn btn-default">@DictionaryHelper.GetDictItem("ButtonSearch","Search")</button>
             </form>
 
         </div><!--/.nav-collapse -->

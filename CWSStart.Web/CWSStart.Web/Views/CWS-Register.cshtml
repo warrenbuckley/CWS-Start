@@ -1,6 +1,7 @@
-﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+﻿@using CWSStart.Web.CWSExtensions
+@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
 @{
     Layout = "CWS-Master.cshtml";
 }
-<h2>Register</h2>
+<h2>@DictionaryHelper.GetDictItem("Register","Register")</h2>
 @Html.Action("RenderRegister","AuthSurface")
