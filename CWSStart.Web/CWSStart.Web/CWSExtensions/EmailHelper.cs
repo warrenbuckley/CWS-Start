@@ -23,7 +23,7 @@ namespace CWSStart.Web.CWSExtensions
 
             //Get values from homenode, with fallback to Mandrill constant's above
             var server  = homepage.GetPropertyValue("smtpServer", SMTPServer).ToString();
-            var user    = homepage.GetPropertyValue("smtpUser", SMTPUser).ToString();
+            var user    = homepage.GetPropertyValue("smtpUsername", SMTPUser).ToString();
             var pass    = homepage.GetPropertyValue("smtpPassword", SMTPPassword).ToString();
 
             //Do a null check just in case homepage node values are empty (fallback to Constants)
